@@ -1,232 +1,1117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anveeksh Mahesh Rao | ISH — Cybersecurity Specialist</title>
-<link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>anveeksh@root:~$</title>
 <style>
-/* ── HERO ── */
-.hero-wrap { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:80px 60px 60px; max-width:1100px; margin:0 auto; }
-.hero-tag { font-size:11px; letter-spacing:4px; color:var(--green-dim); text-transform:uppercase; margin-bottom:14px; }
-.hero-tag span { color:var(--cyan); }
-.hero-name { font-family:'VT323',monospace; font-size:clamp(48px,8vw,110px); line-height:0.95; color:var(--green); text-shadow:0 0 30px var(--green-glow), 0 0 60px rgba(0,255,65,0.25); letter-spacing:4px; animation:glitch 5s infinite; }
-.hero-aka { font-family:'VT323',monospace; font-size:clamp(22px,3vw,38px); color:var(--green-dim); letter-spacing:6px; margin-top:4px; }
-.hero-roles { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
-.role-chip { font-size:10px; letter-spacing:2px; padding:4px 12px; border:1px solid var(--border); color:var(--green-dim); text-transform:uppercase; }
-.role-chip.hl { border-color:rgba(0,255,65,0.35); color:var(--green); }
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Orbitron:wght@400;700;900&display=swap');
 
-@keyframes glitch {
-  0%,88%,100%{transform:none;filter:none;}
-  89%{transform:skew(-0.5deg);filter:hue-rotate(8deg);}
-  90%{transform:translateX(2px);}
-  91%{transform:none;filter:none;}
-  95%{transform:translateX(-2px);color:var(--cyan);text-shadow:0 0 30px var(--cyan);}
-  96%{transform:none;color:var(--green);text-shadow:0 0 30px var(--green-glow);}
-}
+  :root {
+    --green: #00ff41;
+    --green-dim: #00cc33;
+    --green-dark: #003b00;
+    --green-glow: #00ff4180;
+    --bg: #0a0a0a;
+    --bg2: #0d1a0d;
+    --red: #ff003c;
+    --yellow: #ffd700;
+    --cyan: #00fff5;
+    --text: #c8ffc8;
+  }
 
-/* STATS */
-.stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin-bottom:50px; }
-.stat { border:1px solid var(--border); background:rgba(0,12,0,0.5); padding:18px 20px; position:relative; overflow:hidden; transition:all 0.3s; }
-.stat::before { content:''; position:absolute; top:0;left:0; width:100%;height:2px; background:linear-gradient(to right,transparent,var(--green),transparent); transform:scaleX(0); transition:transform 0.4s; }
-.stat:hover::before{transform:scaleX(1);}
-.stat:hover{border-color:rgba(0,255,65,0.35);box-shadow:0 0 20px rgba(0,255,65,0.08);}
-.stat-n { font-family:'Orbitron',sans-serif; font-size:30px; color:var(--green); text-shadow:0 0 12px var(--green-glow); }
-.stat-l { font-size:10px; color:var(--green-dim); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ABOUT */
-.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-.about-text p { font-size:13px; color:var(--text); line-height:1.9; margin-bottom:14px; }
-.about-text p span { color:var(--green); }
+  html { scroll-behavior: smooth; }
 
-/* HIGHLIGHTS */
-.hl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
-.hl-card { border:1px solid var(--border); background:rgba(0,12,0,0.4); padding:20px; position:relative; overflow:hidden; transition:all 0.3s; }
-.hl-card::after { content:''; position:absolute; top:0;left:0; width:3px;height:100%; background:var(--green); box-shadow:0 0 6px var(--green); opacity:0; transition:opacity 0.3s; }
-.hl-card:hover{border-color:rgba(0,255,65,0.4);box-shadow:0 0 20px rgba(0,255,65,0.09);} 
-.hl-card:hover::after{opacity:1;}
-.hl-icon { font-size:24px; margin-bottom:10px; }
-.hl-title { font-family:'Orbitron',sans-serif; font-size:12px; letter-spacing:2px; color:var(--green); margin-bottom:8px; }
-.hl-desc { font-size:12px; color:#7a9a7a; line-height:1.7; }
+  body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-/* MISSION */
-.mission-box { border:1px solid rgba(0,255,245,0.2); background:rgba(0,30,30,0.4); padding:28px 32px; position:relative; }
-.mission-box::before { content:'"'; position:absolute; top:-10px;left:20px; font-family:'VT323',monospace; font-size:60px; color:var(--cyan); opacity:0.3; }
-.mission-text { font-size:15px; color:var(--text); line-height:1.9; font-style:italic; }
-.mission-sig { margin-top:16px; font-size:11px; color:var(--green-dim); letter-spacing:3px; text-transform:uppercase; }
+  /* Custom cursor */
+  .cursor {
+    width: 20px; height: 20px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    box-shadow: 0 0 10px var(--green-glow);
+  }
+  .cursor-dot {
+    width: 4px; height: 4px;
+    background: var(--green);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+  }
 
-/* SKILL BARS */
-.skill-bar { margin-bottom:12px; }
-.sb-label { display:flex; justify-content:space-between; font-size:11px; color:var(--text); margin-bottom:4px; letter-spacing:1px; }
-.sb-track { height:3px; background:var(--border); overflow:hidden; }
-.skill-bar-fill { height:100%; background:var(--green); box-shadow:0 0 5px var(--green); width:0; transition:width 1.3s ease; }
-.skill-bar-fill.animate { width:var(--w); }
+  /* Matrix canvas */
+  #matrix {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    opacity: 0.07;
+  }
 
-@media(max-width:768px){ .hero-wrap{padding:80px 20px 40px;} .about-grid{grid-template-columns:1fr;} }
+  /* Scanlines */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 65, 0.015) 2px,
+      rgba(0, 255, 65, 0.015) 4px
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* CRT flicker */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.85);
+    border-bottom: 1px solid var(--green-dark);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: var(--green);
+    text-shadow: 0 0 10px var(--green);
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--green-dim);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s, text-shadow 0.2s;
+    position: relative;
+  }
+
+  .nav-links a::before {
+    content: '> ';
+    color: var(--green);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--green); text-shadow: 0 0 8px var(--green); }
+  .nav-links a:hover::before { opacity: 1; }
+
+  /* STATUS BAR */
+  .status-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--green);
+    color: #000;
+    font-size: 12px;
+    padding: 3px 16px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    padding: 100px 40px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* HERO */
+  #hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    min-height: 100vh;
+    max-width: 100%;
+    padding-left: 60px;
+  }
+
+  .ascii-name {
+    font-family: 'VT323', monospace;
+    font-size: clamp(40px, 7vw, 90px);
+    line-height: 1;
+    color: var(--green);
+    text-shadow: 0 0 20px var(--green-glow), 0 0 40px var(--green-glow);
+    letter-spacing: 6px;
+    animation: glitch 4s infinite;
+  }
+
+  @keyframes glitch {
+    0%, 90%, 100% { transform: none; filter: none; }
+    91% { transform: skew(-1deg); filter: hue-rotate(10deg); }
+    92% { transform: skew(1deg) translateX(2px); }
+    93% { transform: none; filter: none; }
+    96% { transform: translateX(-2px); color: var(--cyan); }
+    97% { transform: none; color: var(--green); }
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--green-dim);
+    letter-spacing: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  .hero-subtitle span { color: var(--cyan); }
+
+  .terminal-block {
+    margin-top: 40px;
+    background: rgba(0, 30, 0, 0.6);
+    border: 1px solid var(--green-dark);
+    border-radius: 4px;
+    padding: 20px 24px;
+    max-width: 700px;
+    box-shadow: 0 0 30px rgba(0,255,65,0.08), inset 0 0 30px rgba(0,255,65,0.02);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--green-dark);
+  }
+
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .t-dot.red { background: var(--red); }
+  .t-dot.yellow { background: var(--yellow); }
+  .t-dot.green { background: var(--green); }
+  .t-title { font-size: 12px; color: #555; margin-left: 8px; letter-spacing: 2px; }
+
+  .terminal-line {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .terminal-line .prompt { color: var(--green); }
+  .terminal-line .cmd { color: var(--cyan); }
+  .terminal-line .comment { color: #558855; }
+  .terminal-line .val { color: var(--yellow); }
+  .terminal-line .highlight { color: var(--green); font-weight: bold; }
+
+  .cursor-blink {
+    display: inline-block;
+    width: 9px; height: 15px;
+    background: var(--green);
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 10px 24px;
+    border: 1px solid var(--green);
+    background: transparent;
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--green);
+    transition: left 0.25s;
+    z-index: -1;
+  }
+
+  .btn:hover { color: #000; text-shadow: none; }
+  .btn:hover::before { left: 0; }
+
+  .btn.ghost { border-color: var(--green-dim); color: var(--green-dim); }
+
+  /* SECTION HEADERS */
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .sec-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(18px, 3vw, 28px);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green);
+    text-shadow: 0 0 15px var(--green-glow);
+  }
+
+  .sec-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--green-dark), transparent);
+  }
+
+  .sec-num {
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    color: var(--green-dim);
+    letter-spacing: 2px;
+  }
+
+  /* ABOUT / STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .stat-card {
+    border: 1px solid var(--green-dark);
+    background: rgba(0,20,0,0.5);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+  }
+
+  .stat-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 20px rgba(0,255,65,0.1);
+  }
+
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    color: var(--green);
+    text-shadow: 0 0 15px var(--green-glow);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--green-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-group {
+    border: 1px solid var(--green-dark);
+    background: rgba(0,15,0,0.5);
+    padding: 20px;
+  }
+
+  .skill-group-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-group-title::before { content: '//'; color: var(--green-dim); }
+
+  .skill-bar {
+    margin-bottom: 12px;
+  }
+
+  .skill-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .skill-bar-track {
+    height: 4px;
+    background: var(--green-dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    width: 0;
+    transition: width 1.2s ease;
+  }
+
+  .skill-bar-fill.animate { width: var(--w); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .project-card {
+    border: 1px solid var(--green-dark);
+    background: rgba(0,15,0,0.4);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: none;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--green), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+
+  .project-card:hover::after { transform: translateX(0); }
+  .project-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 30px rgba(0,255,65,0.12);
+    transform: translateY(-2px);
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 2px 8px;
+    border: 1px solid var(--green-dark);
+    color: var(--green-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .project-tag.red { border-color: #ff003c44; color: var(--red); }
+  .project-tag.cyan { border-color: #00fff544; color: var(--cyan); }
+  .project-tag.yellow { border-color: #ffd70044; color: var(--yellow); }
+
+  .project-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 15px;
+    color: var(--green);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: #88aa88;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag-pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    background: rgba(0,255,65,0.07);
+    border: 1px solid var(--green-dark);
+    color: var(--green-dim);
+    letter-spacing: 1px;
+  }
+
+  /* EXPERIENCE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+    padding: 20px 24px;
+    border: 1px solid var(--green-dark);
+    background: rgba(0,15,0,0.4);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -40px; top: 24px;
+    width: 10px; height: 10px;
+    border: 2px solid var(--green);
+    background: var(--bg);
+    box-shadow: 0 0 8px var(--green);
+  }
+
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -30px; top: 29px;
+    width: 30px; height: 1px;
+    background: var(--green-dark);
+  }
+
+  .tl-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .tl-role {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    color: var(--green);
+    letter-spacing: 2px;
+  }
+
+  .tl-date {
+    font-size: 11px;
+    color: var(--green-dim);
+    letter-spacing: 2px;
+    font-style: italic;
+  }
+
+  .tl-company {
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .tl-bullets {
+    list-style: none;
+    font-size: 12px;
+    color: #88aa88;
+    line-height: 1.7;
+  }
+
+  .tl-bullets li::before {
+    content: '→ ';
+    color: var(--green-dim);
+  }
+
+  /* CONTACT */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .contact-terminal {
+    background: rgba(0,15,0,0.5);
+    border: 1px solid var(--green-dark);
+    padding: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--green-dark);
+    font-size: 13px;
+  }
+
+  .contact-item:last-child { border: none; }
+  .c-key { color: var(--cyan); min-width: 80px; letter-spacing: 1px; }
+  .c-val { color: var(--text); }
+  .c-val a { color: var(--green); text-decoration: none; }
+  .c-val a:hover { text-shadow: 0 0 8px var(--green); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--green-dark); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--green); }
+
+  /* Noise overlay */
+  .noise {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  }
+
+  /* ACCESS LOG / articles */
+  .log-list { list-style: none; }
+  .log-item {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #0a1a0a;
+    align-items: baseline;
+    transition: background 0.2s;
+  }
+  .log-item:hover { background: rgba(0,255,65,0.03); padding-left: 8px; }
+  .log-date { font-size: 11px; color: var(--green-dim); min-width: 90px; letter-spacing: 1px; }
+  .log-title { font-size: 13px; color: var(--text); letter-spacing: 1px; }
+  .log-tag { font-size: 10px; padding: 1px 6px; border: 1px solid; margin-left: auto; min-width: fit-content; }
+
+  /* MOBILE */
+  @media (max-width: 700px) {
+    #hero { padding-left: 20px; padding-right: 20px; }
+    section { padding: 80px 20px 40px; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    nav { padding: 10px 20px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 11px; letter-spacing: 1px; }
+  }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
+
 <canvas id="matrix"></canvas>
+<div class="noise"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo">[ISH@ROOT:~]$</a>
+  <div class="nav-logo">[ISH@ROOT:~]$</div>
   <ul class="nav-links">
-    <li><a href="index.html">~/home</a></li>
-    <li><a href="projects.html">~/tools</a></li>
-    <li><a href="certifications.html">~/certs</a></li>
-    <li><a href="blog.html">~/blog</a></li>
+    <li><a href="#hero">whoami</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">tools</a></li>
+    <li><a href="#experience">history</a></li>
+    <li><a href="#research">research</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
 
-<main>
-<!-- ══ HERO ══════════════════════════════════════════ -->
-<div class="hero-wrap">
-  <div class="hero-tag">[ <span>CYBERSECURITY SPECIALIST</span> · DIGITAL FORENSICS · EDUCATOR · ENTREPRENEUR ]</div>
-  <div class="hero-name" id="typedName" data-text="ANVEEKSH MAHESH RAO">ANVEEKSH MAHESH RAO</div>
-  <div class="hero-aka">( ISH RAO )</div>
-  <div class="hero-roles">
-    <span class="role-chip hl">CEH</span>
-    <span class="role-chip hl">Cisco CCST</span>
-    <span class="role-chip">MS Cybersecurity @ NEU</span>
-    <span class="role-chip">Founder & CEO — niyantraX</span>
-    <span class="role-chip">MD — CBM Distributors</span>
-    <span class="role-chip">Founder — Mahesh Rao Group</span>
-    <span class="role-chip">CompTIA Security+</span>
+<!-- HERO -->
+<div id="hero">
+  <div class="ascii-name" id="typedName">ANVEEKSH M. RAO</div>
+  <div class="hero-subtitle">
+    <span>CEH</span> · MS Cybersecurity @ Northeastern · <span>CISO & Consultant</span> · PhD-Track
   </div>
 
-  <div class="terminal reveal" style="margin-top:36px;max-width:720px">
-    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">bash — ish@root — 80×24</span></div>
-    <div class="tl"><span class="p">root@kali:~$ </span><span class="c">whoami</span></div>
-    <div class="tl"><span class="h">Anveeksh Mahesh Rao</span> <span class="cm">// ISH RAO</span></div>
-    <div class="tl"><span class="v">location</span>   = <span class="h">"Boston, MA, USA  |  India"</span></div>
-    <div class="tl"><span class="v">education</span>  = <span class="h">"MS Cybersecurity — Northeastern University (GPA 3.85)"</span></div>
-    <div class="tl"><span class="v">degree</span>     = <span class="h">"B.Tech Cyber Security &amp; Forensics — Srinivas University"</span></div>
-    <div class="tl"><span class="v">research</span>   = <span class="h">["CACTi Lab IoT/Firmware","Cyber-Physical Risk","AI Security"]</span></div>
-    <div class="tl"><span class="v">company</span>    = <span class="h">"niyantraX (fmr. Cyber Tech Associates) — CISO &amp; Consultant"</span></div>
-    <div class="tl"><span class="v">trained</span>    = <span class="h">"10,000+ learners globally"</span></div>
-    <div class="tl"><span class="v">papers</span>     = <span class="h">2  </span><span class="cm"># peer-reviewed &amp; published</span></div>
-    <div class="tl"><span class="v">goal</span>       = <span class="h">"PhD → Tenure-track faculty → Independent research lab"</span></div>
-    <div class="tl"><span class="p">root@kali:~$ </span><span class="cb"></span></div>
-  </div>
-
-  <div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;">
-    <a href="projects.html" class="btn">explore tools</a>
-    <a href="certifications.html" class="btn ghost">view certs</a>
-    <a href="#contact" class="btn ghost">contact</a>
-  </div>
-</div>
-
-<!-- ══ STATS ══════════════════════════════════════════ -->
-<div class="section">
-  <div class="stats-row reveal">
-    <div class="stat"><div class="stat-n" data-target="10000">0</div><div class="stat-l">Learners trained globally</div></div>
-    <div class="stat"><div class="stat-n" data-target="6">0</div><div class="stat-l">Countries of operation</div></div>
-    <div class="stat"><div class="stat-n" data-target="385" data-decimals="2" data-suffix="">0</div><div class="stat-l">GPA — Northeastern</div></div>
-    <div class="stat"><div class="stat-n" data-target="25">0</div><div class="stat-l">Certifications earned</div></div>
-    <div class="stat"><div class="stat-n" data-target="2">0</div><div class="stat-l">Peer-reviewed publications</div></div>
-    <div class="stat"><div class="stat-n" data-target="10">0</div><div class="stat-l">Open-source tools built</div></div>
-  </div>
-</div>
-
-<!-- ══ ABOUT ═════════════════════════════════════════ -->
-<div class="section" id="about">
-  <div class="sec-header reveal"><span class="sec-num">01</span><h2>cat about_ish.txt</h2></div>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>Anveeksh Mahesh Rao — known as <span>Ish</span> — is a <span>cybersecurity specialist, digital-forensics investigator, educator, and entrepreneur</span> operating across the USA and India. He holds a B.Tech in Cyber Security & Cyber Forensics from Srinivas University and earned certifications including <span>Cisco CCST</span>, reinforcing a strong technical foundation.</p>
-      <p>He is currently pursuing his <span>M.S. in Cybersecurity at Northeastern University</span> (GPA 3.85), where his research explores cyber defence, privacy, decision-making, and critical infrastructure protection. His work connects advanced frameworks, AI-driven analytics, and human-centred security design to improve resilience across global digital ecosystems.</p>
-      <p>With a career spanning ethical hacking, penetration testing, VAPT, and secure operations, Ish bridges the gap between cutting-edge cyber threats and the practical needs of organisations, academic institutions, and individuals.</p>
-      <p>He is the <span>Founder & CEO of niyantraX</span> (formerly Cyber Tech Associates) — a comprehensive digital solutions and consulting organisation through which he has trained and mentored <span>more than 10,000 learners</span>, delivered workshops across India, and collaborated with universities and corporates to enhance cybersecurity readiness.</p>
-      <p>In addition to cybersecurity, Ish serves as the <span>Managing Director of CBM Distributors</span> and is the <span>Founder of Mahesh Rao Group of Companies</span>, operating across technology, education, and business development.</p>
+  <div class="terminal-block reveal">
+    <div class="terminal-header">
+      <div class="t-dot red"></div>
+      <div class="t-dot yellow"></div>
+      <div class="t-dot green"></div>
+      <span class="t-title">bash — anveeksh@root — 80×24</span>
     </div>
+    <div class="terminal-line"><span class="prompt">root@kali:~$ </span><span class="cmd">cat about.txt</span></div>
+    <div class="terminal-line comment"># MS Cybersecurity — Northeastern University (GPA 3.85 | May 2027)</div>
+    <div class="terminal-line"><span class="val">name</span>      = <span class="highlight">"Anveeksh Mahesh Rao"</span> <span class="comment"># goes by ISH</span></div>
+    <div class="terminal-line"><span class="val">location</span>  = <span class="highlight">"Boston, MA"</span></div>
+    <div class="terminal-line"><span class="val">certs</span>     = <span class="highlight">["CEH", "CompTIA Security+ (in-progress)"]</span></div>
+    <div class="terminal-line"><span class="val">research</span>  = <span class="highlight">["CACTi Lab (IoT/firmware)", "Cyber-Physical Risk"]</span></div>
+    <div class="terminal-line"><span class="val">company</span>   = <span class="highlight">"Cyber Tech Associates (CISO, 30-person, 6 countries)"</span></div>
+    <div class="terminal-line"><span class="val">papers</span>    = <span class="highlight">2  # peer-reviewed &amp; published</span></div>
+    <div class="terminal-line"><span class="val">goal</span>      = <span class="highlight">"PhD → Tenure-track faculty → Independent research lab"</span></div>
+    <div class="terminal-line"><span class="prompt">root@kali:~$ </span><span class="cursor-blink"></span></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#projects" class="btn">explore tools</a>
+    <a href="#contact" class="btn ghost">initiate contact</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<section id="about">
+  <div class="stats-grid reveal">
+    <div class="stat-card">
+      <div class="stat-num" data-target="30">0</div>
+      <div class="stat-label">Team size @ Cyber Tech Associates</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-target="6">0</div>
+      <div class="stat-label">Countries of operation</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-target="2">0</div>
+      <div class="stat-label">Peer-reviewed publications</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-target="385" data-suffix="/400">0</div>
+      <div class="stat-label">GPA points (3.85 / 4.0)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" data-target="10">0</div>
+      <div class="stat-label">Open-source security tools built</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header reveal">
+    <span class="sec-num">02</span>
+    <h2>skill_set.json</h2>
+  </div>
+
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Offensive Security</div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Penetration Testing</span><span>92%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:92%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>VAPT / Bug Bounty</span><span>88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:88%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Exploit Development</span><span>75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:75%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>CTF / Reverse Eng.</span><span>82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:82%"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Research & IoT</div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Firmware Fuzzing</span><span>80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:80%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>IoT Vulnerability Research</span><span>84%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:84%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>OT/ICS Security</span><span>72%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:72%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Medical Device Sec.</span><span>70%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:70%"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">GRC & Compliance</div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Risk Assessment</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:90%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>NIST / ISO 27001</span><span>85%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:85%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>AI/ML Compliance</span><span>78%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:78%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Cyber-Physical Risk</span><span>82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:82%"></div></div></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Engineering & Dev</div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Python / Bash</span><span>90%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:90%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>ML / AI Security</span><span>82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:82%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Wazuh / SIEM</span><span>80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:80%"></div></div></div>
+      <div class="skill-bar"><div class="skill-bar-label"><span>Docker / Flask</span><span>76%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:76%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS / PROJECTS -->
+<section id="projects">
+  <div class="sec-header reveal">
+    <span class="sec-num">03</span>
+    <h2>ls ~/tools/</h2>
+  </div>
+
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-tag red">Offensive</div>
+      <div class="project-title">PIKOPET v2.0</div>
+      <div class="project-desc">AI-powered cross-platform penetration testing assistant using Ollama local LLM inference. Natural language attack planning, automated recon, and exploit suggestion pipeline.</div>
+      <div class="project-stack">
+        <span class="tag-pill">Python</span><span class="tag-pill">Ollama</span><span class="tag-pill">LLM</span><span class="tag-pill">Pentest</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag cyan">Detection</div>
+      <div class="project-title">PhishGuard Pro v2.0</div>
+      <div class="project-desc">Flask SIEM-style phishing detection dashboard. ML ensemble (Random Forest + XGBoost + Neural Net), 99.5% accuracy, real-time email/QR/batch scanning. Research paper published.</div>
+      <div class="project-stack">
+        <span class="tag-pill">Flask</span><span class="tag-pill">XGBoost</span><span class="tag-pill">RF</span><span class="tag-pill">PyTorch</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag red">Offensive</div>
+      <div class="project-title">NetPwn</div>
+      <div class="project-desc">Network pentesting framework with integrated Flask dashboard. Automated service enumeration, CVE correlation, and attack surface visualization.</div>
+      <div class="project-stack">
+        <span class="tag-pill">Python</span><span class="tag-pill">Nmap</span><span class="tag-pill">Flask</span><span class="tag-pill">CVE</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag">OSINT</div>
+      <div class="project-title">TraceHunt</div>
+      <div class="project-desc">OSINT people-search CLI tool for passive reconnaissance. Aggregates public data sources with structured profiling output and operator-safe logging.</div>
+      <div class="project-stack">
+        <span class="tag-pill">Python</span><span class="tag-pill">OSINT</span><span class="tag-pill">CLI</span><span class="tag-pill">Recon</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag cyan">Defense</div>
+      <div class="project-title">HoneyTrap Lab</div>
+      <div class="project-desc">Production-grade Cowrie SSH honeypot with real attacker capture, MITRE ATT&CK TTP mapping, and Wazuh integration for automated alerting.</div>
+      <div class="project-stack">
+        <span class="tag-pill">Cowrie</span><span class="tag-pill">Wazuh</span><span class="tag-pill">ATT&CK</span><span class="tag-pill">ELK</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag yellow">ML/AI</div>
+      <div class="project-title">Attack Path Predictor</div>
+      <div class="project-desc">Graph theory + ML model that predicts lateral movement paths in enterprise networks. Node embeddings encode vulnerability metadata; path scoring via GNN.</div>
+      <div class="project-stack">
+        <span class="tag-pill">NetworkX</span><span class="tag-pill">GNN</span><span class="tag-pill">Python</span><span class="tag-pill">Graph ML</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag red">Offensive</div>
+      <div class="project-title">ShadowScan</div>
+      <div class="project-desc">Offensive security CLI toolkit for automated subdomain enumeration, port scanning, and credential auditing with modular plugin architecture.</div>
+      <div class="project-stack">
+        <span class="tag-pill">Python</span><span class="tag-pill">CLI</span><span class="tag-pill">Recon</span><span class="tag-pill">Plugins</span>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-tag cyan">GRC</div>
+      <div class="project-title">AI-Integrated GRC Platform</div>
+      <div class="project-desc">End-to-end governance, risk & compliance platform with LLM-powered policy generation, gap analysis, and compliance scoring against NIST, ISO 27001.</div>
+      <div class="project-stack">
+        <span class="tag-pill">LLM</span><span class="tag-pill">NIST</span><span class="tag-pill">ISO 27001</span><span class="tag-pill">Flask</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header reveal">
+    <span class="sec-num">04</span>
+    <h2>cat history.log</h2>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="tl-header">
+        <div class="tl-role">Research Assistant</div>
+        <div class="tl-date">2025 – Present</div>
+      </div>
+      <div class="tl-company">CACTi Lab · Northeastern University · Prof. Ziming Zhao</div>
+      <ul class="tl-bullets">
+        <li>Firmware fuzzing and IoT vulnerability research on embedded devices</li>
+        <li>Medical device security assessment and responsible disclosure pipeline</li>
+        <li>Cyber-physical risk modeling under Prof. Papageorge</li>
+      </ul>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="tl-header">
+        <div class="tl-role">CISO & Cybersecurity Consultant</div>
+        <div class="tl-date">Jan 2024 – Sep 2025</div>
+      </div>
+      <div class="tl-company">Cyber Tech Associates · 30-person firm · 6 countries</div>
+      <ul class="tl-bullets">
+        <li>Co-founded and scaled cybersecurity consulting firm across 6 countries</li>
+        <li>Trained thousands of students globally in offensive/defensive security</li>
+        <li>Led VAPT engagements, GRC advisory, and incident response operations</li>
+      </ul>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="tl-header">
+        <div class="tl-role">Cyber Security Engineer</div>
+        <div class="tl-date">2023 – 2024</div>
+      </div>
+      <div class="tl-company">Mentorbot LLP · Techproxima Dubai · Agamya Cyber Tech</div>
+      <ul class="tl-bullets">
+        <li>Penetration testing, VAPT, and security assessments across client environments</li>
+        <li>Developed internal tooling for automated vulnerability discovery</li>
+        <li>Security consulting in Dubai and India-based technology firms</li>
+      </ul>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="tl-header">
+        <div class="tl-role">B.Tech · Cyber Security & Cyber Forensics</div>
+        <div class="tl-date">2020 – 2024</div>
+      </div>
+      <div class="tl-company">Srinivas University · CGPA 8.34</div>
+      <ul class="tl-bullets">
+        <li>Published 2 peer-reviewed research papers in cybersecurity domain</li>
+        <li>Specialized in digital forensics, network security, and cryptography</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH / ARTICLES -->
+<section id="research">
+  <div class="sec-header reveal">
+    <span class="sec-num">05</span>
+    <h2>grep -r research/ .</h2>
+  </div>
+
+  <ul class="log-list reveal">
+    <li class="log-item">
+      <span class="log-date">2025-03-04</span>
+      <span class="log-title">HoneyTrap Lab: Deploying a Production-Grade SSH Honeypot to Catch Real Attackers</span>
+      <span class="log-tag" style="color:var(--red);border-color:#ff003c44">BLOG</span>
+    </li>
+    <li class="log-item">
+      <span class="log-date">2025-10-24</span>
+      <span class="log-title">Understanding the Rise of Phishing Attacks and Human Vulnerability in Cybersecurity</span>
+      <span class="log-tag" style="color:var(--cyan);border-color:#00fff544">BLOG</span>
+    </li>
+    <li class="log-item">
+      <span class="log-date">2025-10-20</span>
+      <span class="log-title">Understanding the Impacts of the October 2025 AWS Outage in N. Virginia on Businesses</span>
+      <span class="log-tag" style="color:var(--cyan);border-color:#00fff544">BLOG</span>
+    </li>
+    <li class="log-item">
+      <span class="log-date">2024</span>
+      <span class="log-title">PhishGuard: ML-Based Phishing Detection — 99.5% Accuracy, Paradigm Ceiling Analysis</span>
+      <span class="log-tag" style="color:var(--yellow);border-color:#ffd70044">PAPER</span>
+    </li>
+    <li class="log-item">
+      <span class="log-date">2024</span>
+      <span class="log-title">Cyber-Physical Risk Assessment: Boston Energy Network Threat Modeling</span>
+      <span class="log-tag" style="color:var(--yellow);border-color:#ffd70044">PAPER</span>
+    </li>
+    <li class="log-item">
+      <span class="log-date">Ongoing</span>
+      <span class="log-title">Firmware Fuzzing & IoT Vulnerability Research — CACTi Lab, Northeastern University</span>
+      <span class="log-tag" style="color:var(--green);border-color:var(--green-dark)">ACTIVE</span>
+    </li>
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-header reveal">
+    <span class="sec-num">06</span>
+    <h2>./contact.sh</h2>
+  </div>
+
+  <div class="contact-wrap">
+    <div class="contact-terminal reveal">
+      <div class="terminal-header">
+        <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
+        <span class="t-title">contact_info.json</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-key">phone</span>
+        <span class="c-val">(617) 840-8538</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-key">location</span>
+        <span class="c-val">Boston, MA</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-key">edu</span>
+        <span class="c-val">Northeastern University · Khoury College</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-key">status</span>
+        <span class="c-val" style="color:var(--green)">● OPEN TO OPPORTUNITIES</span>
+      </div>
+      <div class="contact-item">
+        <span class="c-key">focus</span>
+        <span class="c-val">Offensive Sec · GRC · OT/ICS · Research</span>
+      </div>
+    </div>
+
     <div class="reveal">
-      <div class="terminal" style="margin-bottom:20px">
-        <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">research_focus.md</span></div>
-        <div class="tl"><span class="cm">## Current Research Areas</span></div>
-        <div class="tl"><span class="p">→ </span>Firmware Fuzzing &amp; IoT Vulnerability (CACTi Lab)</div>
-        <div class="tl"><span class="p">→ </span>Medical Device Security</div>
-        <div class="tl"><span class="p">→ </span>Cyber-Physical Risk (Prof. Papageorge)</div>
-        <div class="tl"><span class="p">→ </span>AI-Driven Analytics in Cyber Defence</div>
-        <div class="tl"><span class="p">→ </span>Critical Infrastructure Protection</div>
-        <div class="tl"><span class="p">→ </span>Human-Centred Security Design</div>
-        <div class="tl"><span class="p">→ </span>Privacy &amp; Decision-Making Frameworks</div>
-      </div>
-      <div style="margin-bottom:10px">
-        <div class="skill-bar reveal"><div class="sb-label"><span>Penetration Testing / VAPT</span><span>92%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:92%"></div></div></div>
-        <div class="skill-bar reveal"><div class="sb-label"><span>IoT / Firmware Research</span><span>84%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:84%"></div></div></div>
-        <div class="skill-bar reveal"><div class="sb-label"><span>GRC &amp; Compliance (NIST/ISO)</span><span>88%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:88%"></div></div></div>
-        <div class="skill-bar reveal"><div class="sb-label"><span>Digital Forensics</span><span>90%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:90%"></div></div></div>
-        <div class="skill-bar reveal"><div class="sb-label"><span>ML / AI Security</span><span>80%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:80%"></div></div></div>
-        <div class="skill-bar reveal"><div class="sb-label"><span>Python / Bash Scripting</span><span>90%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:90%"></div></div></div>
+      <div class="terminal-block" style="height:100%">
+        <div class="terminal-header">
+          <div class="t-dot red"></div><div class="t-dot yellow"></div><div class="t-dot green"></div>
+          <span class="t-title">quick_connect.sh</span>
+        </div>
+        <div class="terminal-line" style="margin-bottom:12px"><span class="prompt">$ </span><span class="cmd">echo "Looking for internship / research collab?"</span></div>
+        <div class="terminal-line comment"># Reach out. I respond fast.</div>
+        <br>
+        <div class="terminal-line"><span class="val">areas</span> = [</div>
+        <div class="terminal-line" style="padding-left:20px"><span class="highlight">"Offensive Security Intern"</span>,</div>
+        <div class="terminal-line" style="padding-left:20px"><span class="highlight">"GRC / AI Compliance Analyst"</span>,</div>
+        <div class="terminal-line" style="padding-left:20px"><span class="highlight">"OT/ICS Security Research"</span>,</div>
+        <div class="terminal-line" style="padding-left:20px"><span class="highlight">"Research Collaborations"</span></div>
+        <div class="terminal-line">]</div>
+        <br>
+        <div class="terminal-line"><span class="prompt">$ </span><span class="cursor-blink"></span></div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══ PROFESSIONAL HIGHLIGHTS ═══════════════════════ -->
-<div class="section" id="highlights">
-  <div class="sec-header reveal"><span class="sec-num">02</span><h2>ls highlights/</h2></div>
-  <div class="hl-grid">
-    <div class="hl-card reveal"><div class="hl-icon">🔍</div><div class="hl-title">Cybersecurity Expert</div><div class="hl-desc">Led numerous cyber-crime investigations, assisting law enforcement and organizations in identifying, analyzing, and mitigating digital threats.</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">🎓</div><div class="hl-title">Guest Lecturer & Educator</div><div class="hl-desc">Delivered workshops and seminars on cyber forensics, cyber-crime investigation, and career pathways at universities and corporate institutions.</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">🚀</div><div class="hl-title">Entrepreneur & Innovator</div><div class="hl-desc">Founded and managed cybersecurity consulting ventures — niyantraX (fmr. Cyber Tech Associates) — to bridge the cybersecurity workforce gap globally.</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">🏆</div><div class="hl-title">Recognition & Awards</div><div class="hl-desc">Honored by multiple institutions, including Leo Club International with "Best Supportive LEO" and "LEO – Lion of the Year".</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">⚡</div><div class="hl-title">Leadership Roles</div><div class="hl-desc">As Co-Founder at niyantraX: Cyber Crime Investigator, Cyber Security Engineer, Trainer, and Managing Director of CBM Distributors.</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">🎤</div><div class="hl-title">Guest Faculty & Speaker</div><div class="hl-desc">Shared expertise as guest faculty at universities; engaged in conferences and seminars to inspire and mentor learners across India and globally.</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">🏦</div><div class="hl-title">Workshops & Proposals</div><div class="hl-desc">Designed and delivered cybersecurity awareness programs for banks, colleges, and corporations to uplift digital security practices at scale.</div></div>
-    <div class="hl-card reveal"><div class="hl-icon">📹</div><div class="hl-title">Content Creator</div><div class="hl-desc">Runs the YouTube channel "Anveeksh Mahesh Rao" — job updates, student motivation, cybersecurity, criminology, business trips, and success stories in Kannada.</div></div>
-  </div>
-</div>
-
-<!-- ══ MISSION ════════════════════════════════════════ -->
-<div class="section" id="mission">
-  <div class="sec-header reveal"><span class="sec-num">03</span><h2>cat mission.txt</h2></div>
-  <div class="mission-box reveal">
-    <p class="mission-text">Driven by a mission to build a digitally secure and entrepreneurially empowered world, Anveeksh integrates innovation, education, and leadership to create sustainable growth and cross-industry impact. His work connects advanced cybersecurity frameworks, AI-driven analytics, and human-centred security design to improve resilience across global digital ecosystems.</p>
-    <div class="mission-sig">— Anveeksh Mahesh Rao (Ish) · Cybersecurity Specialist · Educator · Entrepreneur</div>
-  </div>
-</div>
-
-<!-- ══ CONTACT ════════════════════════════════════════ -->
-<div class="section" id="contact">
-  <div class="sec-header reveal"><span class="sec-num">04</span><h2>./contact.sh</h2></div>
-  <div class="grid-2">
-    <div class="terminal reveal">
-      <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">contact_info.json</span></div>
-      <div style="font-size:13px;line-height:2;color:var(--text)">
-        <div><span style="color:var(--cyan)">email (NEU) &nbsp;</span> <a href="mailto:rao.anv@northeastern.edu" style="color:var(--green);text-decoration:none">rao.anv@northeastern.edu</a></div>
-        <div><span style="color:var(--cyan)">email (personal)</span> <a href="mailto:raoanveeksh@gmail.com" style="color:var(--green);text-decoration:none">raoanveeksh@gmail.com</a></div>
-        <div><span style="color:var(--cyan)">phone (USA) &nbsp;&nbsp;</span> <a href="tel:+16178408538" style="color:var(--green);text-decoration:none">(617) 840-8538</a></div>
-        <div><span style="color:var(--cyan)">phone (India) &nbsp;</span> <a href="tel:+916361576311" style="color:var(--green);text-decoration:none">+91 63615 76311</a></div>
-        <div><span style="color:var(--cyan)">location &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Boston, MA, USA &amp; India</div>
-        <div><span style="color:var(--cyan)">education &nbsp;&nbsp;&nbsp;&nbsp;</span> Northeastern University · Khoury College</div>
-        <div style="margin-top:8px"><span style="color:var(--green)">● OPEN TO OPPORTUNITIES</span></div>
-      </div>
-    </div>
-    <div class="terminal reveal">
-      <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">looking_for.txt</span></div>
-      <div class="tl"><span class="p">$ </span><span class="c">cat open_roles.txt</span></div>
-      <div class="tl"><span class="cm"># Currently seeking:</span></div>
-      <div class="tl"><span class="p">→ </span>Offensive Security Internship</div>
-      <div class="tl"><span class="p">→ </span>GRC / AI Compliance Analyst</div>
-      <div class="tl"><span class="p">→ </span>OT/ICS Security Research Role</div>
-      <div class="tl"><span class="p">→ </span>Research Collaborations (IoT/Firmware)</div>
-      <div class="tl"><span class="p">→ </span>Guest Lecture / Workshop Invitations</div>
-      <div class="tl" style="margin-top:8px"><span class="p">$ </span><span class="cb"></span></div>
-    </div>
-  </div>
-</div>
-</main>
-
+<!-- STATUS BAR -->
 <div class="status-bar">
-  <span>ISH@ROOT · BOSTON MA · INDIA · STATUS: ONLINE</span>
+  <span>ISH@ROOT  ·  BOSTON, MA  ·  STATUS: ONLINE</span>
   <span id="clock"></span>
-  <span>CEH · CISCO CCST · COMPTIA SECURITY+ · MS CYBERSECURITY — NEU 2027</span>
+  <span>CEH  ·  SECURITY+[IN PROGRESS]  ·  MS CYBERSECURITY — NEU 2027</span>
 </div>
 
-<script src="js/main.js"></script>
+<script>
+// --- CURSOR ---
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+let mx = 0, my = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursorDot.style.left = mx - 2 + 'px'; cursorDot.style.top = my - 2 + 'px'; });
+(function animCursor() {
+  cx += (mx - cx) * 0.15; cy += (my - cy) * 0.15;
+  cursor.style.left = cx - 10 + 'px'; cursor.style.top = cy - 10 + 'px';
+  requestAnimationFrame(animCursor);
+})();
+
+// --- MATRIX RAIN ---
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+let cols, drops;
+function initMatrix() {
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  cols = Math.floor(canvas.width / 16);
+  drops = Array(cols).fill(1);
+}
+initMatrix();
+window.addEventListener('resize', initMatrix);
+const chars = '01アイウエオカキクケコサシスセソタチツテト<>{}[]|\\/#$@%&*ABCDEF';
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(0,0,0,0.04)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#00ff41';
+  ctx.font = '14px Share Tech Mono';
+  drops.forEach((y, i) => {
+    const ch = chars[Math.floor(Math.random() * chars.length)];
+    ctx.fillStyle = Math.random() > 0.95 ? '#ffffff' : '#00ff41';
+    ctx.fillText(ch, i * 16, y * 16);
+    if (y * 16 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+    drops[i]++;
+  });
+}
+setInterval(drawMatrix, 50);
+
+// --- CLOCK ---
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent =
+    now.toISOString().replace('T', ' ').slice(0, 19) + ' UTC';
+}
+updateClock(); setInterval(updateClock, 1000);
+
+// --- SCROLL REVEAL ---
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(r => obs.observe(r));
+
+// --- SKILL BARS ---
+const bars = document.querySelectorAll('.skill-bar-fill');
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+}, { threshold: 0.3 });
+bars.forEach(b => barObs.observe(b));
+
+// --- COUNTER ANIMATION ---
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const isGpa = target === 385;
+  let current = 0;
+  const step = Math.max(1, Math.floor(target / 40));
+  const timer = setInterval(() => {
+    current = Math.min(current + step, target);
+    el.textContent = isGpa ? (current / 100).toFixed(2) : current + suffix;
+    if (current >= target) clearInterval(timer);
+  }, 40);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.target.dataset.target) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+
+// --- TYPEWRITER GLITCH for hero name ---
+const nameEl = document.getElementById('typedName');
+const fullName = 'ANVEEKSH M. RAO';
+let typed = '';
+let i = 0;
+function typeChar() {
+  if (i < fullName.length) {
+    typed += fullName[i++];
+    nameEl.textContent = typed + (Math.random() > 0.5 ? '_' : '');
+    setTimeout(typeChar, 60 + Math.random() * 60);
+  } else {
+    nameEl.textContent = fullName;
+  }
+}
+nameEl.textContent = '';
+setTimeout(typeChar, 400);
+</script>
 </body>
 </html>
