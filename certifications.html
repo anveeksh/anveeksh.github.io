@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certifications & Awards | Ish Rao</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero{padding:80px 40px 30px;max-width:1100px;margin:0 auto;}
+.page-title{font-family:'VT323',monospace;font-size:clamp(36px,6vw,72px);color:var(--green);text-shadow:0 0 20px var(--green-glow);letter-spacing:4px;}
+.page-sub{font-size:12px;color:var(--green-dim);letter-spacing:3px;margin-top:6px;}
+
+/* CERT CARDS */
+.cert-card{border:1px solid var(--border);background:rgba(0,12,0,0.45);padding:18px 20px;position:relative;overflow:hidden;transition:all 0.3s;display:flex;gap:14px;align-items:flex-start;}
+.cert-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--green);opacity:0;transition:opacity 0.3s;box-shadow:0 0 6px var(--green);}
+.cert-card:hover{border-color:rgba(0,255,65,0.4);box-shadow:0 0 20px rgba(0,255,65,0.08);}
+.cert-card:hover::before{opacity:1;}
+.cert-icon{font-size:20px;min-width:28px;margin-top:2px;}
+.cert-body{}
+.cert-name{font-family:'Orbitron',sans-serif;font-size:12px;color:var(--green);letter-spacing:1.5px;margin-bottom:4px;line-height:1.4;}
+.cert-issuer{font-size:11px;color:var(--cyan);letter-spacing:1px;}
+.cert-year{font-size:10px;color:var(--green-dim);margin-top:3px;letter-spacing:1px;}
+
+/* CATEGORY HEADER */
+.cat-header{border:1px solid var(--border);background:rgba(0,20,0,0.6);padding:12px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;}
+.cat-header .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+
+/* AWARDS */
+.award-card{border:1px solid rgba(255,215,0,0.2);background:rgba(20,16,0,0.5);padding:20px;position:relative;overflow:hidden;transition:all 0.3s;}
+.award-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
+.award-card:hover{border-color:rgba(255,215,0,0.4);box-shadow:0 0 20px rgba(255,215,0,0.08);}
+.award-icon{font-size:28px;margin-bottom:10px;}
+.award-title{font-family:'Orbitron',sans-serif;font-size:13px;color:var(--yellow);letter-spacing:2px;margin-bottom:6px;}
+.award-org{font-size:12px;color:var(--text);margin-bottom:4px;}
+.award-desc{font-size:11px;color:#888;line-height:1.6;}
+
+/* COUNTER STRIP */
+.count-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:50px;}
+.count-cell{background:rgba(0,12,0,0.6);padding:18px;text-align:center;}
+.count-n{font-family:'Orbitron',sans-serif;font-size:28px;color:var(--green);text-shadow:0 0 10px var(--green-glow);}
+.count-l{font-size:10px;color:var(--green-dim);letter-spacing:2px;text-transform:uppercase;margin-top:3px;}
+
+/* PROGRESS RING */
+.ring-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-bottom:40px;}
+.ring-item{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.ring-label{font-size:11px;color:var(--text);letter-spacing:1px;text-align:center;max-width:80px;}
+.ring-pct{font-family:'Orbitron',sans-serif;font-size:13px;color:var(--green);}
+
+@media(max-width:600px){.cert-card{padding:14px;}.cert-name{font-size:11px;}}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">[ISH@ROOT:~]$</a>
+  <ul class="nav-links">
+    <li><a href="index.html">~/home</a></li>
+    <li><a href="projects.html">~/tools</a></li>
+    <li><a href="certifications.html" class="active">~/certs</a></li>
+    <li><a href="blog.html">~/blog</a></li>
+    <li><a href="index.html#contact">contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<div class="page-hero">
+  <div class="page-title">CERTS & AWARDS</div>
+  <div class="page-sub">cat ~/certifications.json · A testament to professional excellence &amp; continuous learning</div>
+</div>
+
+<div class="section">
+  <!-- STATS STRIP -->
+  <div class="count-strip reveal">
+    <div class="count-cell"><div class="count-n" data-target="25">0</div><div class="count-l">Total Certs</div></div>
+    <div class="count-cell"><div class="count-n" data-target="6">0</div><div class="count-l">Cisco Certs</div></div>
+    <div class="count-cell"><div class="count-n" data-target="3">0</div><div class="count-l">Palo Alto</div></div>
+    <div class="count-cell"><div class="count-n" data-target="2">0</div><div class="count-l">Pearson IT</div></div>
+    <div class="count-cell"><div class="count-n" data-target="4">0</div><div class="count-l">Platform Certs</div></div>
+  </div>
+
+  <!-- ── CISCO ─────────────────────────────────── -->
+  <div class="cat-header reveal"><div class="dot"></div>CISCO</div>
+  <div class="grid-2" style="margin-bottom:30px">
+    <div class="cert-card reveal"><div class="cert-icon">🔵</div><div class="cert-body"><div class="cert-name">Cisco Certified Support Technician (CCST) — Cybersecurity</div><div class="cert-issuer">Cisco Systems</div><div class="cert-year">Core Credential</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🔵</div><div class="cert-body"><div class="cert-name">Cisco Certified Network Associate (CCNA)</div><div class="cert-issuer">Cisco Systems</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🔵</div><div class="cert-body"><div class="cert-name">Cisco NDG Linux Unhatched Course</div><div class="cert-issuer">Cisco Networking Academy</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🔵</div><div class="cert-body"><div class="cert-name">Fundamentals of Cybersecurity</div><div class="cert-issuer">Cisco</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🔵</div><div class="cert-body"><div class="cert-name">Cyber Threat Management</div><div class="cert-issuer">Cisco</div></div></div>
+  </div>
+
+  <!-- ── COMPTIA ────────────────────────────────── -->
+  <div class="cat-header reveal"><div class="dot" style="background:var(--red);box-shadow:0 0 6px var(--red)"></div>COMPTIA</div>
+  <div class="grid-2" style="margin-bottom:30px">
+    <div class="cert-card reveal"><div class="cert-icon">🔴</div><div class="cert-body"><div class="cert-name">CompTIA Security+</div><div class="cert-issuer">CompTIA</div><div class="cert-year" style="color:var(--green)">✓ Passed</div></div></div>
+  </div>
+
+  <!-- ── PALO ALTO ──────────────────────────────── -->
+  <div class="cat-header reveal"><div class="dot" style="background:var(--red);box-shadow:0 0 6px var(--red)"></div>PALO ALTO NETWORKS</div>
+  <div class="grid-2" style="margin-bottom:30px">
+    <div class="cert-card reveal"><div class="cert-icon">🟠</div><div class="cert-body"><div class="cert-name">Fundamentals of SOC (Security Operation Center)</div><div class="cert-issuer">Palo Alto Networks</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🟠</div><div class="cert-body"><div class="cert-name">Cortex XSOAR Engineer: Widgets Development</div><div class="cert-issuer">Palo Alto Networks</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🟠</div><div class="cert-body"><div class="cert-name">Cortex XSOAR Engineer: Creating & Managing Jobs</div><div class="cert-issuer">Palo Alto Networks</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🟠</div><div class="cert-body"><div class="cert-name">Fundamentals of Network Security</div><div class="cert-issuer">Palo Alto Networks</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🟠</div><div class="cert-body"><div class="cert-name">Fundamentals of Cloud Security</div><div class="cert-issuer">Palo Alto Networks</div></div></div>
+  </div>
+
+  <!-- ── PEARSON IT ─────────────────────────────── -->
+  <div class="cat-header reveal"><div class="dot" style="background:var(--yellow);box-shadow:0 0 6px var(--yellow)"></div>PEARSON IT SPECIALIST</div>
+  <div class="grid-2" style="margin-bottom:30px">
+    <div class="cert-card reveal"><div class="cert-icon">🟡</div><div class="cert-body"><div class="cert-name">IT Specialist — Python</div><div class="cert-issuer">Pearson / Certiport</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">🟡</div><div class="cert-body"><div class="cert-name">IT Specialist — Cyber Security</div><div class="cert-issuer">Pearson / Certiport</div></div></div>
+  </div>
+
+  <!-- ── EC-COUNCIL / ETHICAL HACKING ──────────── -->
+  <div class="cat-header reveal"><div class="dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>ETHICAL HACKING & OFFENSIVE SECURITY</div>
+  <div class="grid-2" style="margin-bottom:30px">
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Certified Ethical Hacker (CEH)</div><div class="cert-issuer">EC-Council</div><div class="cert-year" style="color:var(--green)">✓ Core Credential</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Introduction to Dark Web, Anonymity & Cryptocurrency</div><div class="cert-issuer">EC-Council</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Ethical Hacking</div><div class="cert-issuer">Internshala</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Ethical Hacking</div><div class="cert-issuer">Hacker Academy</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Security Cadet — Ethical Hacking 2022</div><div class="cert-issuer">Udemy</div><div class="cert-year">2022</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Penetration Testing Consultant</div><div class="cert-issuer">Alison</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Ransomware Uncovered Specialist Certificate</div><div class="cert-issuer">International Cyber Threat Task Force</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">⚔️</div><div class="cert-body"><div class="cert-name">Certified Information Security Manager (CISM)</div><div class="cert-issuer">Cybrary</div></div></div>
+  </div>
+
+  <!-- ── CLOUD / PLATFORMS ───────────────────── -->
+  <div class="cat-header reveal"><div class="dot" style="background:var(--cyan);box-shadow:0 0 6px var(--cyan)"></div>CLOUD & PLATFORM</div>
+  <div class="grid-2" style="margin-bottom:30px">
+    <div class="cert-card reveal"><div class="cert-icon">☁️</div><div class="cert-body"><div class="cert-name">Cloud Computing Using AWS</div><div class="cert-issuer">Internshala</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">☁️</div><div class="cert-body"><div class="cert-name">Foundation to Cyber Security</div><div class="cert-issuer">Google</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">☁️</div><div class="cert-body"><div class="cert-name">Cyber Security</div><div class="cert-issuer">Programming Hub (Google)</div></div></div>
+  </div>
+
+  <!-- ── OTHER CERTS ────────────────────────────── -->
+  <div class="cat-header reveal"><div class="dot" style="background:#888"></div>ADDITIONAL CERTIFICATIONS</div>
+  <div class="grid-2" style="margin-bottom:50px">
+    <div class="cert-card reveal"><div class="cert-icon">🛡️</div><div class="cert-body"><div class="cert-name">Cyber Safe Girl v5</div><div class="cert-issuer">Cyber Safe Campus</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">📋</div><div class="cert-body"><div class="cert-name">Foundations of Business and Entrepreneurship</div><div class="cert-issuer">SkillFront</div></div></div>
+    <div class="cert-card reveal"><div class="cert-icon">📋</div><div class="cert-body"><div class="cert-name">ISO 9001:2015 — Quality Management System</div><div class="cert-issuer">Alison</div></div></div>
+  </div>
+
+  <!-- ══ AWARDS & ACHIEVEMENTS ═════════════════ -->
+  <div class="sec-header reveal"><span class="sec-num">02</span><h2>cat awards.log</h2></div>
+  <div class="grid-3" style="margin-bottom:40px">
+    <div class="award-card reveal"><div class="award-icon">🏆</div><div class="award-title">Best Supportive LEO</div><div class="award-org">Leo Club International</div><div class="award-desc">Recognized for outstanding contributions and support within the Leo Club network at the international level.</div></div>
+    <div class="award-card reveal"><div class="award-icon">🦁</div><div class="award-title">LEO – Lion of the Year</div><div class="award-org">Leo Club International</div><div class="award-desc">Awarded the highest individual recognition within the Leo Club for exceptional leadership and service.</div></div>
+    <div class="award-card reveal"><div class="award-icon">🎓</div><div class="award-title">Academic Excellence</div><div class="award-org">Srinivas University</div><div class="award-desc">B.Tech in Cyber Security & Cyber Forensics with Distinction (CGPA 8.34). Published 2 peer-reviewed research papers.</div></div>
+    <div class="award-card reveal"><div class="award-icon">🔬</div><div class="award-title">Research Recognition</div><div class="award-org">Northeastern University — CACTi Lab</div><div class="award-desc">Research assistant in firmware fuzzing, IoT vulnerability research, and medical device security under Prof. Ziming Zhao.</div></div>
+    <div class="award-card reveal"><div class="award-icon">🌍</div><div class="award-title">Global Impact — 10,000+ Learners</div><div class="award-org">niyantraX / Cyber Tech Associates</div><div class="award-desc">Trained and mentored over 10,000 learners across India and 6 countries through workshops, seminars, and corporate programs.</div></div>
+    <div class="award-card reveal"><div class="award-icon">📹</div><div class="award-title">Content Creator & Educator</div><div class="award-org">YouTube — Anveeksh Mahesh Rao</div><div class="award-desc">Runs a Kannada-language channel covering cybersecurity, career guidance, criminology, and entrepreneurship for students.</div></div>
+  </div>
+
+  <!-- TERMINAL SUMMARY -->
+  <div class="terminal reveal" style="max-width:700px;margin:0 auto">
+    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">cert_summary.sh</span></div>
+    <div class="tl"><span class="p">$ </span><span class="c">grep -c "PASS" ~/certs/all_certs.log</span></div>
+    <div class="tl"><span class="v">25 certifications earned</span></div>
+    <div class="tl"><span class="p">$ </span><span class="c">cat top_creds.txt</span></div>
+    <div class="tl"><span class="cm"># Core credentials:</span></div>
+    <div class="tl"><span class="p">→ </span>Certified Ethical Hacker (CEH) — EC-Council</div>
+    <div class="tl"><span class="p">→ </span>Cisco CCST Cybersecurity — Cisco Systems</div>
+    <div class="tl"><span class="p">→ </span>Cisco CCNA — Cisco Systems</div>
+    <div class="tl"><span class="p">→ </span>CompTIA Security+ — <span class="h">Passed</span></div>
+    <div class="tl"><span class="p">→ </span>Palo Alto SOC Fundamentals</div>
+    <div class="tl"><span class="p">$ </span><span class="cb"></span></div>
+  </div>
+</div>
+</main>
+
+<div class="status-bar">
+  <span>ISH@ROOT · CERTIFICATIONS &amp; AWARDS</span>
+  <span id="clock"></span>
+  <span>CEH · CCST · CCNA · SECURITY+ · 26 CERTS TOTAL</span>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anveeksh Mahesh Rao | ISH — Cybersecurity Specialist</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ── HERO ── */
+.hero-wrap { min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:80px 60px 60px; max-width:1100px; margin:0 auto; }
+.hero-tag { font-size:11px; letter-spacing:4px; color:var(--green-dim); text-transform:uppercase; margin-bottom:14px; }
+.hero-tag span { color:var(--cyan); }
+.hero-name { font-family:'VT323',monospace; font-size:clamp(48px,8vw,110px); line-height:0.95; color:var(--green); text-shadow:0 0 30px var(--green-glow), 0 0 60px rgba(0,255,65,0.25); letter-spacing:4px; animation:glitch 5s infinite; }
+.hero-aka { font-family:'VT323',monospace; font-size:clamp(22px,3vw,38px); color:var(--green-dim); letter-spacing:6px; margin-top:4px; }
+.hero-roles { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.role-chip { font-size:10px; letter-spacing:2px; padding:4px 12px; border:1px solid var(--border); color:var(--green-dim); text-transform:uppercase; }
+.role-chip.hl { border-color:rgba(0,255,65,0.35); color:var(--green); }
+
+@keyframes glitch {
+  0%,88%,100%{transform:none;filter:none;}
+  89%{transform:skew(-0.5deg);filter:hue-rotate(8deg);}
+  90%{transform:translateX(2px);}
+  91%{transform:none;filter:none;}
+  95%{transform:translateX(-2px);color:var(--cyan);text-shadow:0 0 30px var(--cyan);}
+  96%{transform:none;color:var(--green);text-shadow:0 0 30px var(--green-glow);}
+}
+
+/* STATS */
+.stats-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin-bottom:50px; }
+.stat { border:1px solid var(--border); background:rgba(0,12,0,0.5); padding:18px 20px; position:relative; overflow:hidden; transition:all 0.3s; }
+.stat::before { content:''; position:absolute; top:0;left:0; width:100%;height:2px; background:linear-gradient(to right,transparent,var(--green),transparent); transform:scaleX(0); transition:transform 0.4s; }
+.stat:hover::before{transform:scaleX(1);}
+.stat:hover{border-color:rgba(0,255,65,0.35);box-shadow:0 0 20px rgba(0,255,65,0.08);}
+.stat-n { font-family:'Orbitron',sans-serif; font-size:30px; color:var(--green); text-shadow:0 0 12px var(--green-glow); }
+.stat-l { font-size:10px; color:var(--green-dim); letter-spacing:2px; text-transform:uppercase; margin-top:3px; }
+
+/* ABOUT */
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+.about-text p { font-size:13px; color:var(--text); line-height:1.9; margin-bottom:14px; }
+.about-text p span { color:var(--green); }
+
+/* HIGHLIGHTS */
+.hl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+.hl-card { border:1px solid var(--border); background:rgba(0,12,0,0.4); padding:20px; position:relative; overflow:hidden; transition:all 0.3s; }
+.hl-card::after { content:''; position:absolute; top:0;left:0; width:3px;height:100%; background:var(--green); box-shadow:0 0 6px var(--green); opacity:0; transition:opacity 0.3s; }
+.hl-card:hover{border-color:rgba(0,255,65,0.4);box-shadow:0 0 20px rgba(0,255,65,0.09);} 
+.hl-card:hover::after{opacity:1;}
+.hl-icon { font-size:24px; margin-bottom:10px; }
+.hl-title { font-family:'Orbitron',sans-serif; font-size:12px; letter-spacing:2px; color:var(--green); margin-bottom:8px; }
+.hl-desc { font-size:12px; color:#7a9a7a; line-height:1.7; }
+
+/* MISSION */
+.mission-box { border:1px solid rgba(0,255,245,0.2); background:rgba(0,30,30,0.4); padding:28px 32px; position:relative; }
+.mission-box::before { content:'"'; position:absolute; top:-10px;left:20px; font-family:'VT323',monospace; font-size:60px; color:var(--cyan); opacity:0.3; }
+.mission-text { font-size:15px; color:var(--text); line-height:1.9; font-style:italic; }
+.mission-sig { margin-top:16px; font-size:11px; color:var(--green-dim); letter-spacing:3px; text-transform:uppercase; }
+
+/* SKILL BARS */
+.skill-bar { margin-bottom:12px; }
+.sb-label { display:flex; justify-content:space-between; font-size:11px; color:var(--text); margin-bottom:4px; letter-spacing:1px; }
+.sb-track { height:3px; background:var(--border); overflow:hidden; }
+.skill-bar-fill { height:100%; background:var(--green); box-shadow:0 0 5px var(--green); width:0; transition:width 1.3s ease; }
+.skill-bar-fill.animate { width:var(--w); }
+
+@media(max-width:768px){ .hero-wrap{padding:80px 20px 40px;} .about-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">[ISH@ROOT:~]$</a>
+  <ul class="nav-links">
+    <li><a href="index.html">~/home</a></li>
+    <li><a href="projects.html">~/tools</a></li>
+    <li><a href="certifications.html">~/certs</a></li>
+    <li><a href="blog.html">~/blog</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<!-- ══ HERO ══════════════════════════════════════════ -->
+<div class="hero-wrap">
+  <div class="hero-tag">[ <span>CYBERSECURITY SPECIALIST</span> · DIGITAL FORENSICS · EDUCATOR · ENTREPRENEUR ]</div>
+  <div class="hero-name" id="typedName" data-text="ANVEEKSH MAHESH RAO">ANVEEKSH MAHESH RAO</div>
+  <div class="hero-aka">( ISH RAO )</div>
+  <div class="hero-roles">
+    <span class="role-chip hl">CEH</span>
+    <span class="role-chip hl">Cisco CCST</span>
+    <span class="role-chip">MS Cybersecurity @ NEU</span>
+    <span class="role-chip">Founder & CEO — niyantraX</span>
+    <span class="role-chip">MD — CBM Distributors</span>
+    <span class="role-chip">Founder — Mahesh Rao Group</span>
+    <span class="role-chip">CompTIA Security+</span>
+  </div>
+
+  <div class="terminal reveal" style="margin-top:36px;max-width:720px">
+    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">bash — ish@root — 80×24</span></div>
+    <div class="tl"><span class="p">root@kali:~$ </span><span class="c">whoami</span></div>
+    <div class="tl"><span class="h">Anveeksh Mahesh Rao</span> <span class="cm">// ISH RAO</span></div>
+    <div class="tl"><span class="v">location</span>   = <span class="h">"Boston, MA, USA  |  India"</span></div>
+    <div class="tl"><span class="v">education</span>  = <span class="h">"MS Cybersecurity — Northeastern University (GPA 3.85)"</span></div>
+    <div class="tl"><span class="v">degree</span>     = <span class="h">"B.Tech Cyber Security &amp; Forensics — Srinivas University"</span></div>
+    <div class="tl"><span class="v">research</span>   = <span class="h">["CACTi Lab IoT/Firmware","Cyber-Physical Risk","AI Security"]</span></div>
+    <div class="tl"><span class="v">company</span>    = <span class="h">"niyantraX (fmr. Cyber Tech Associates) — CISO &amp; Consultant"</span></div>
+    <div class="tl"><span class="v">trained</span>    = <span class="h">"10,000+ learners globally"</span></div>
+    <div class="tl"><span class="v">papers</span>     = <span class="h">2  </span><span class="cm"># peer-reviewed &amp; published</span></div>
+    <div class="tl"><span class="v">goal</span>       = <span class="h">"PhD → Tenure-track faculty → Independent research lab"</span></div>
+    <div class="tl"><span class="p">root@kali:~$ </span><span class="cb"></span></div>
+  </div>
+
+  <div style="display:flex;gap:14px;margin-top:28px;flex-wrap:wrap;">
+    <a href="projects.html" class="btn">explore tools</a>
+    <a href="certifications.html" class="btn ghost">view certs</a>
+    <a href="#contact" class="btn ghost">contact</a>
+  </div>
+</div>
+
+<!-- ══ STATS ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="stats-row reveal">
+    <div class="stat"><div class="stat-n" data-target="10000">0</div><div class="stat-l">Learners trained globally</div></div>
+    <div class="stat"><div class="stat-n" data-target="6">0</div><div class="stat-l">Countries of operation</div></div>
+    <div class="stat"><div class="stat-n" data-target="385" data-decimals="2" data-suffix="">0</div><div class="stat-l">GPA — Northeastern</div></div>
+    <div class="stat"><div class="stat-n" data-target="25">0</div><div class="stat-l">Certifications earned</div></div>
+    <div class="stat"><div class="stat-n" data-target="2">0</div><div class="stat-l">Peer-reviewed publications</div></div>
+    <div class="stat"><div class="stat-n" data-target="10">0</div><div class="stat-l">Open-source tools built</div></div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ═════════════════════════════════════════ -->
+<div class="section" id="about">
+  <div class="sec-header reveal"><span class="sec-num">01</span><h2>cat about_ish.txt</h2></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>Anveeksh Mahesh Rao — known as <span>Ish</span> — is a <span>cybersecurity specialist, digital-forensics investigator, educator, and entrepreneur</span> operating across the USA and India. He holds a B.Tech in Cyber Security & Cyber Forensics from Srinivas University and earned certifications including <span>Cisco CCST</span>, reinforcing a strong technical foundation.</p>
+      <p>He is currently pursuing his <span>M.S. in Cybersecurity at Northeastern University</span> (GPA 3.85), where his research explores cyber defence, privacy, decision-making, and critical infrastructure protection. His work connects advanced frameworks, AI-driven analytics, and human-centred security design to improve resilience across global digital ecosystems.</p>
+      <p>With a career spanning ethical hacking, penetration testing, VAPT, and secure operations, Ish bridges the gap between cutting-edge cyber threats and the practical needs of organisations, academic institutions, and individuals.</p>
+      <p>He is the <span>Founder & CEO of niyantraX</span> (formerly Cyber Tech Associates) — a comprehensive digital solutions and consulting organisation through which he has trained and mentored <span>more than 10,000 learners</span>, delivered workshops across India, and collaborated with universities and corporates to enhance cybersecurity readiness.</p>
+      <p>In addition to cybersecurity, Ish serves as the <span>Managing Director of CBM Distributors</span> and is the <span>Founder of Mahesh Rao Group of Companies</span>, operating across technology, education, and business development.</p>
+    </div>
+    <div class="reveal">
+      <div class="terminal" style="margin-bottom:20px">
+        <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">research_focus.md</span></div>
+        <div class="tl"><span class="cm">## Current Research Areas</span></div>
+        <div class="tl"><span class="p">→ </span>Firmware Fuzzing &amp; IoT Vulnerability (CACTi Lab)</div>
+        <div class="tl"><span class="p">→ </span>Medical Device Security</div>
+        <div class="tl"><span class="p">→ </span>Cyber-Physical Risk (Prof. Papageorge)</div>
+        <div class="tl"><span class="p">→ </span>AI-Driven Analytics in Cyber Defence</div>
+        <div class="tl"><span class="p">→ </span>Critical Infrastructure Protection</div>
+        <div class="tl"><span class="p">→ </span>Human-Centred Security Design</div>
+        <div class="tl"><span class="p">→ </span>Privacy &amp; Decision-Making Frameworks</div>
+      </div>
+      <div style="margin-bottom:10px">
+        <div class="skill-bar reveal"><div class="sb-label"><span>Penetration Testing / VAPT</span><span>92%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:92%"></div></div></div>
+        <div class="skill-bar reveal"><div class="sb-label"><span>IoT / Firmware Research</span><span>84%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:84%"></div></div></div>
+        <div class="skill-bar reveal"><div class="sb-label"><span>GRC &amp; Compliance (NIST/ISO)</span><span>88%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:88%"></div></div></div>
+        <div class="skill-bar reveal"><div class="sb-label"><span>Digital Forensics</span><span>90%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:90%"></div></div></div>
+        <div class="skill-bar reveal"><div class="sb-label"><span>ML / AI Security</span><span>80%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:80%"></div></div></div>
+        <div class="skill-bar reveal"><div class="sb-label"><span>Python / Bash Scripting</span><span>90%</span></div><div class="sb-track"><div class="skill-bar-fill" style="--w:90%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PROFESSIONAL HIGHLIGHTS ═══════════════════════ -->
+<div class="section" id="highlights">
+  <div class="sec-header reveal"><span class="sec-num">02</span><h2>ls highlights/</h2></div>
+  <div class="hl-grid">
+    <div class="hl-card reveal"><div class="hl-icon">🔍</div><div class="hl-title">Cybersecurity Expert</div><div class="hl-desc">Led numerous cyber-crime investigations, assisting law enforcement and organizations in identifying, analyzing, and mitigating digital threats.</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">🎓</div><div class="hl-title">Guest Lecturer & Educator</div><div class="hl-desc">Delivered workshops and seminars on cyber forensics, cyber-crime investigation, and career pathways at universities and corporate institutions.</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">🚀</div><div class="hl-title">Entrepreneur & Innovator</div><div class="hl-desc">Founded and managed cybersecurity consulting ventures — niyantraX (fmr. Cyber Tech Associates) — to bridge the cybersecurity workforce gap globally.</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">🏆</div><div class="hl-title">Recognition & Awards</div><div class="hl-desc">Honored by multiple institutions, including Leo Club International with "Best Supportive LEO" and "LEO – Lion of the Year".</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">⚡</div><div class="hl-title">Leadership Roles</div><div class="hl-desc">As Co-Founder at niyantraX: Cyber Crime Investigator, Cyber Security Engineer, Trainer, and Managing Director of CBM Distributors.</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">🎤</div><div class="hl-title">Guest Faculty & Speaker</div><div class="hl-desc">Shared expertise as guest faculty at universities; engaged in conferences and seminars to inspire and mentor learners across India and globally.</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">🏦</div><div class="hl-title">Workshops & Proposals</div><div class="hl-desc">Designed and delivered cybersecurity awareness programs for banks, colleges, and corporations to uplift digital security practices at scale.</div></div>
+    <div class="hl-card reveal"><div class="hl-icon">📹</div><div class="hl-title">Content Creator</div><div class="hl-desc">Runs the YouTube channel "Anveeksh Mahesh Rao" — job updates, student motivation, cybersecurity, criminology, business trips, and success stories in Kannada.</div></div>
+  </div>
+</div>
+
+<!-- ══ MISSION ════════════════════════════════════════ -->
+<div class="section" id="mission">
+  <div class="sec-header reveal"><span class="sec-num">03</span><h2>cat mission.txt</h2></div>
+  <div class="mission-box reveal">
+    <p class="mission-text">Driven by a mission to build a digitally secure and entrepreneurially empowered world, Anveeksh integrates innovation, education, and leadership to create sustainable growth and cross-industry impact. His work connects advanced cybersecurity frameworks, AI-driven analytics, and human-centred security design to improve resilience across global digital ecosystems.</p>
+    <div class="mission-sig">— Anveeksh Mahesh Rao (Ish) · Cybersecurity Specialist · Educator · Entrepreneur</div>
+  </div>
+</div>
+
+<!-- ══ CONTACT ════════════════════════════════════════ -->
+<div class="section" id="contact">
+  <div class="sec-header reveal"><span class="sec-num">04</span><h2>./contact.sh</h2></div>
+  <div class="grid-2">
+    <div class="terminal reveal">
+      <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">contact_info.json</span></div>
+      <div style="font-size:13px;line-height:2;color:var(--text)">
+        <div><span style="color:var(--cyan)">email (NEU) &nbsp;</span> <a href="mailto:rao.anv@northeastern.edu" style="color:var(--green);text-decoration:none">rao.anv@northeastern.edu</a></div>
+        <div><span style="color:var(--cyan)">email (personal)</span> <a href="mailto:raoanveeksh@gmail.com" style="color:var(--green);text-decoration:none">raoanveeksh@gmail.com</a></div>
+        <div><span style="color:var(--cyan)">phone (USA) &nbsp;&nbsp;</span> <a href="tel:+16178408538" style="color:var(--green);text-decoration:none">(617) 840-8538</a></div>
+        <div><span style="color:var(--cyan)">phone (India) &nbsp;</span> <a href="tel:+916361576311" style="color:var(--green);text-decoration:none">+91 63615 76311</a></div>
+        <div><span style="color:var(--cyan)">location &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Boston, MA, USA &amp; India</div>
+        <div><span style="color:var(--cyan)">education &nbsp;&nbsp;&nbsp;&nbsp;</span> Northeastern University · Khoury College</div>
+        <div style="margin-top:8px"><span style="color:var(--green)">● OPEN TO OPPORTUNITIES</span></div>
+      </div>
+    </div>
+    <div class="terminal reveal">
+      <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">looking_for.txt</span></div>
+      <div class="tl"><span class="p">$ </span><span class="c">cat open_roles.txt</span></div>
+      <div class="tl"><span class="cm"># Currently seeking:</span></div>
+      <div class="tl"><span class="p">→ </span>Offensive Security Internship</div>
+      <div class="tl"><span class="p">→ </span>GRC / AI Compliance Analyst</div>
+      <div class="tl"><span class="p">→ </span>OT/ICS Security Research Role</div>
+      <div class="tl"><span class="p">→ </span>Research Collaborations (IoT/Firmware)</div>
+      <div class="tl"><span class="p">→ </span>Guest Lecture / Workshop Invitations</div>
+      <div class="tl" style="margin-top:8px"><span class="p">$ </span><span class="cb"></span></div>
+    </div>
+  </div>
+</div>
+</main>
+
+<div class="status-bar">
+  <span>ISH@ROOT · BOSTON MA · INDIA · STATUS: ONLINE</span>
+  <span id="clock"></span>
+  <span>CEH · CISCO CCST · COMPTIA SECURITY+ · MS CYBERSECURITY — NEU 2027</span>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

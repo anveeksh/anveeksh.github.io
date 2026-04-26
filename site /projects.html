@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools & Projects | Ish Rao</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero { padding:80px 40px 30px; max-width:1100px; margin:0 auto; }
+.page-title { font-family:'VT323',monospace; font-size:clamp(36px,6vw,72px); color:var(--green); text-shadow:0 0 20px var(--green-glow); letter-spacing:4px; }
+.page-sub { font-size:12px; color:var(--green-dim); letter-spacing:3px; margin-top:6px; }
+
+/* PROJECT CARDS */
+.proj-card { border:1px solid var(--border); background:rgba(0,12,0,0.45); padding:24px; position:relative; overflow:hidden; transition:all 0.3s; }
+.proj-card::after { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:linear-gradient(to right,transparent,var(--green),transparent); transform:translateX(-100%); transition:transform 0.45s; }
+.proj-card:hover::after{transform:translateX(0);}
+.proj-card:hover{border-color:rgba(0,255,65,0.4);box-shadow:0 0 28px rgba(0,255,65,0.1);transform:translateY(-2px);}
+.proj-tag-row { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+.proj-title { font-family:'Orbitron',sans-serif; font-size:15px; color:var(--green); margin-bottom:8px; letter-spacing:2px; }
+.proj-desc { font-size:12px; color:#7a9a7a; line-height:1.75; margin-bottom:14px; }
+.proj-stack { display:flex; flex-wrap:wrap; gap:5px; }
+
+/* CATEGORY TABS */
+.cat-tabs { display:flex; gap:0; flex-wrap:wrap; margin-bottom:30px; border:1px solid var(--border); overflow:hidden; }
+.cat-tab { padding:8px 20px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--green-dim); background:transparent; border:none; border-right:1px solid var(--border); cursor:none; font-family:'Share Tech Mono',monospace; transition:all 0.2s; }
+.cat-tab:last-child{border-right:none;}
+.cat-tab.active,.cat-tab:hover{background:rgba(0,255,65,0.08);color:var(--green);}
+.cat-tab.active{border-bottom:2px solid var(--green);}
+
+/* EXPERIENCE TIMELINE */
+.timeline { position:relative; padding-left:30px; }
+.timeline::before { content:''; position:absolute; left:0;top:0;bottom:0; width:1px; background:linear-gradient(to bottom,var(--green),transparent); }
+.tli { position:relative; margin-bottom:28px; padding:18px 22px; border:1px solid var(--border); background:rgba(0,12,0,0.4); }
+.tli::before { content:''; position:absolute; left:-38px;top:20px; width:10px;height:10px; border:2px solid var(--green); background:var(--bg); box-shadow:0 0 7px var(--green); }
+.tli::after { content:''; position:absolute; left:-28px;top:25px; width:28px;height:1px; background:var(--border); }
+.tli-top { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+.tli-role { font-family:'Orbitron',sans-serif; font-size:12px; color:var(--green); letter-spacing:2px; }
+.tli-date { font-size:11px; color:var(--green-dim); letter-spacing:2px; }
+.tli-co { font-size:12px; color:var(--cyan); margin-bottom:8px; letter-spacing:1px; }
+.tli-list { list-style:none; font-size:12px; color:#7a9a7a; line-height:1.75; }
+.tli-list li::before { content:'→ '; color:var(--green-dim); }
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">[ISH@ROOT:~]$</a>
+  <ul class="nav-links">
+    <li><a href="index.html">~/home</a></li>
+    <li><a href="projects.html" class="active">~/tools</a></li>
+    <li><a href="certifications.html">~/certs</a></li>
+    <li><a href="blog.html">~/blog</a></li>
+    <li><a href="index.html#contact">contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<div class="page-hero">
+  <div class="page-title">TOOLS & PROJECTS</div>
+  <div class="page-sub">ls -la ~/projects/ · ls -la ~/experience/</div>
+</div>
+
+<!-- ══ TOOLS ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="sec-header reveal"><span class="sec-num">01</span><h2>ls ~/tools/ —all</h2></div>
+  <div class="cat-tabs reveal" id="catTabs">
+    <button class="cat-tab active" data-filter="all">All</button>
+    <button class="cat-tab" data-filter="offensive">Offensive</button>
+    <button class="cat-tab" data-filter="detection">Detection</button>
+    <button class="cat-tab" data-filter="osint">OSINT</button>
+    <button class="cat-tab" data-filter="grc">GRC/AI</button>
+    <button class="cat-tab" data-filter="ml">ML/Research</button>
+  </div>
+  <div class="grid-2" id="projGrid">
+    <div class="proj-card reveal" data-cat="offensive"><div class="proj-tag-row"><span class="tag red">Offensive</span><span class="tag">AI-Powered</span></div><div class="proj-title">PIKOPET v2.0</div><div class="proj-desc">AI-powered cross-platform penetration testing assistant using Ollama local LLM inference. Natural language attack planning, automated recon, and exploit suggestion pipeline — fully offline, privacy-first.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">Ollama</span><span class="pill">LLM</span><span class="pill">Pentest</span><span class="pill">CLI</span></div></div>
+
+    <div class="proj-card reveal" data-cat="detection"><div class="proj-tag-row"><span class="tag cyan">Detection</span><span class="tag yellow">ML</span></div><div class="proj-title">PhishGuard Pro v2.0</div><div class="proj-desc">Flask SIEM-style phishing detection dashboard. ML ensemble (Random Forest + XGBoost + Neural Network), 99.5% accuracy. Identified the "paradigm ceiling" — 95.4% FP rate on out-of-distribution URLs. Research paper published.</div><div class="proj-stack"><span class="pill">Flask</span><span class="pill">XGBoost</span><span class="pill">Random Forest</span><span class="pill">PyTorch</span><span class="pill">SIEM</span></div></div>
+
+    <div class="proj-card reveal" data-cat="offensive"><div class="proj-tag-row"><span class="tag red">Offensive</span></div><div class="proj-title">NetPwn</div><div class="proj-desc">Network pentesting framework with integrated Flask dashboard. Automated service enumeration, CVE correlation, and attack surface visualization for rapid assessments.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">Nmap</span><span class="pill">Flask</span><span class="pill">CVE API</span></div></div>
+
+    <div class="proj-card reveal" data-cat="osint"><div class="proj-tag-row"><span class="tag">OSINT</span></div><div class="proj-title">TraceHunt</div><div class="proj-desc">OSINT people-search CLI tool for passive reconnaissance. Aggregates public data sources with structured profiling output and operator-safe logging for legitimate investigations.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">OSINT</span><span class="pill">CLI</span><span class="pill">Recon</span></div></div>
+
+    <div class="proj-card reveal" data-cat="detection"><div class="proj-tag-row"><span class="tag cyan">Defense</span><span class="tag">Honeypot</span></div><div class="proj-title">HoneyTrap Lab</div><div class="proj-desc">Production-grade Cowrie SSH honeypot capturing real attacker TTPs, with MITRE ATT&CK mapping and Wazuh SIEM integration for automated threat alerting and IOC extraction.</div><div class="proj-stack"><span class="pill">Cowrie</span><span class="pill">Wazuh</span><span class="pill">ATT&CK</span><span class="pill">ELK Stack</span></div></div>
+
+    <div class="proj-card reveal" data-cat="ml"><div class="proj-tag-row"><span class="tag yellow">ML/Research</span></div><div class="proj-title">Attack Path Predictor</div><div class="proj-desc">Graph theory + ML model that predicts lateral movement paths in enterprise networks. Node embeddings encode vulnerability metadata; path scoring via Graph Neural Network.</div><div class="proj-stack"><span class="pill">NetworkX</span><span class="pill">GNN</span><span class="pill">Python</span><span class="pill">Graph ML</span></div></div>
+
+    <div class="proj-card reveal" data-cat="offensive"><div class="proj-tag-row"><span class="tag red">Offensive</span></div><div class="proj-title">ShadowScan</div><div class="proj-desc">Offensive security CLI toolkit for automated subdomain enumeration, port scanning, and credential auditing with modular plugin architecture for custom extension.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">CLI</span><span class="pill">Recon</span><span class="pill">Plugin System</span></div></div>
+
+    <div class="proj-card reveal" data-cat="offensive"><div class="proj-tag-row"><span class="tag red">Offensive</span></div><div class="proj-title">CyberEye</div><div class="proj-desc">Full pentest framework with CVE scanning, automated exploit suggestions, and PDF reporting. Built for rapid assessment cycles with clean deliverable generation.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">CVE NVD</span><span class="pill">ReportLab</span><span class="pill">Flask</span></div></div>
+
+    <div class="proj-card reveal" data-cat="grc"><div class="proj-tag-row"><span class="tag cyan">GRC</span><span class="tag yellow">AI</span></div><div class="proj-title">AI-Integrated GRC Platform</div><div class="proj-desc">End-to-end governance, risk & compliance platform with LLM-powered policy generation, gap analysis, and compliance scoring against NIST CSF, ISO 27001, and SOC 2.</div><div class="proj-stack"><span class="pill">LLM</span><span class="pill">NIST</span><span class="pill">ISO 27001</span><span class="pill">Flask</span><span class="pill">Python</span></div></div>
+
+    <div class="proj-card reveal" data-cat="detection"><div class="proj-tag-row"><span class="tag cyan">Threat Intel</span><span class="tag yellow">ML</span></div><div class="proj-title">CyberPulse</div><div class="proj-desc">ML-powered threat intelligence platform aggregating feeds, correlating IOCs across sources, and generating prioritized threat actor profiles for SOC teams.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">ML</span><span class="pill">STIX/TAXII</span><span class="pill">Dashboard</span></div></div>
+
+    <div class="proj-card reveal" data-cat="osint"><div class="proj-tag-row"><span class="tag">OSINT</span></div><div class="proj-title">SubdomainHunter</div><div class="proj-desc">Passive and active subdomain discovery tool combining certificate transparency logs, DNS brute-forcing, and web scraping for comprehensive attack surface mapping.</div><div class="proj-stack"><span class="pill">Python</span><span class="pill">DNS</span><span class="pill">CT Logs</span><span class="pill">CLI</span></div></div>
+
+    <div class="proj-card reveal" data-cat="detection"><div class="proj-tag-row"><span class="tag cyan">SIEM</span></div><div class="proj-title">Wazuh Home Lab</div><div class="proj-desc">Production Wazuh SIEM deployment with custom detection rules, active response playbooks, and integrated threat hunting dashboards for lab environment monitoring.</div><div class="proj-stack"><span class="pill">Wazuh</span><span class="pill">Elastic</span><span class="pill">Kibana</span><span class="pill">Linux</span></div></div>
+  </div>
+</div>
+
+<!-- ══ EXPERIENCE ════════════════════════════════════ -->
+<div class="section" id="experience">
+  <div class="sec-header reveal"><span class="sec-num">02</span><h2>cat history.log</h2></div>
+  <div class="timeline">
+    <div class="tli reveal">
+      <div class="tli-top"><div class="tli-role">Research Assistant</div><div class="tli-date">2025 – Present</div></div>
+      <div class="tli-co">CACTi Lab · Northeastern University · Prof. Ziming Zhao</div>
+      <ul class="tli-list"><li>Firmware fuzzing and IoT vulnerability research on embedded devices</li><li>Medical device security assessment and responsible disclosure pipeline</li><li>Cyber-physical risk modelling under Prof. Papageorge (Boston energy network)</li><li>Khoury Research Apprenticeship Program — Fall 2026 applicant</li></ul>
+    </div>
+    <div class="tli reveal">
+      <div class="tli-top"><div class="tli-role">CISO & Cybersecurity Consultant</div><div class="tli-date">Jan 2024 – Sep 2025</div></div>
+      <div class="tli-co">Cyber Tech Associates (now niyantraX) · 30+ people · 6 countries</div>
+      <ul class="tli-list"><li>Co-founded and scaled cybersecurity consulting firm across 6 countries</li><li>Trained and mentored 10,000+ learners globally</li><li>Led VAPT engagements, GRC advisory, and incident response operations</li><li>Delivered cybersecurity awareness workshops for banks, colleges, and corporations</li></ul>
+    </div>
+    <div class="tli reveal">
+      <div class="tli-top"><div class="tli-role">Cyber Security Engineer</div><div class="tli-date">2023 – 2024</div></div>
+      <div class="tli-co">Mentorbot LLP · Techproxima Dubai · Agamya Cyber Tech · Tracelay</div>
+      <ul class="tli-list"><li>Penetration testing, VAPT, and security assessments across client environments</li><li>Security consulting engagements in Dubai and India</li><li>Developed internal tooling for automated vulnerability discovery and reporting</li></ul>
+    </div>
+    <div class="tli reveal">
+      <div class="tli-top"><div class="tli-role">Managing Director</div><div class="tli-date">Ongoing</div></div>
+      <div class="tli-co">CBM Distributors</div>
+      <ul class="tli-list"><li>Business development and operational leadership across technology and distribution</li></ul>
+    </div>
+    <div class="tli reveal">
+      <div class="tli-top"><div class="tli-role">Founder</div><div class="tli-date">Ongoing</div></div>
+      <div class="tli-co">Mahesh Rao Group of Companies</div>
+      <ul class="tli-list"><li>Group operations spanning technology, education, and business development</li></ul>
+    </div>
+    <div class="tli reveal">
+      <div class="tli-top"><div class="tli-role">B.Tech — Cyber Security & Cyber Forensics</div><div class="tli-date">2020 – 2024</div></div>
+      <div class="tli-co">Srinivas University · CGPA 8.34 · Distinction</div>
+      <ul class="tli-list"><li>Published 2 peer-reviewed research papers in cybersecurity domain</li><li>Specialized in digital forensics, network security, and cryptography</li></ul>
+    </div>
+  </div>
+</div>
+</main>
+
+<div class="status-bar">
+  <span>ISH@ROOT · TOOLS &amp; PROJECTS</span>
+  <span id="clock"></span>
+  <span>10,000+ LEARNERS TRAINED GLOBALLY</span>
+</div>
+
+<script src="js/main.js"></script>
+<script>
+// Filter tabs
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const filter = tab.dataset.filter;
+    document.querySelectorAll('#projGrid .proj-card').forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

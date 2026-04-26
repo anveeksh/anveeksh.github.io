@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Research | Ish Rao</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.page-hero{padding:80px 40px 30px;max-width:1100px;margin:0 auto;}
+.page-title{font-family:'VT323',monospace;font-size:clamp(36px,6vw,72px);color:var(--green);text-shadow:0 0 20px var(--green-glow);letter-spacing:4px;}
+.page-sub{font-size:12px;color:var(--green-dim);letter-spacing:3px;margin-top:6px;}
+
+/* BLOG CARDS */
+.blog-card{border:1px solid var(--border);background:rgba(0,12,0,0.45);padding:26px;position:relative;overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;gap:10px;}
+.blog-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--cyan),transparent);transform:translateX(-100%);transition:transform 0.45s;}
+.blog-card:hover::after{transform:translateX(0);}
+.blog-card:hover{border-color:rgba(0,255,245,0.3);box-shadow:0 0 25px rgba(0,255,245,0.07);transform:translateY(-2px);}
+.blog-meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.blog-date{font-size:11px;color:var(--green-dim);letter-spacing:2px;}
+.blog-title{font-family:'Orbitron',sans-serif;font-size:14px;color:var(--green);letter-spacing:2px;line-height:1.4;}
+.blog-excerpt{font-size:12px;color:#7a9a7a;line-height:1.75;}
+.blog-link{font-size:11px;color:var(--cyan);letter-spacing:2px;text-decoration:none;text-transform:uppercase;align-self:flex-start;margin-top:4px;transition:text-shadow 0.2s;}
+.blog-link:hover{text-shadow:0 0 8px var(--cyan);}
+.blog-link::before{content:'→ ';}
+
+/* FEATURED */
+.blog-featured{border-color:rgba(0,255,245,0.3);background:rgba(0,20,20,0.5);}
+.blog-featured .blog-title{color:var(--cyan);}
+.featured-badge{font-size:9px;letter-spacing:2px;padding:2px 8px;border:1px solid rgba(0,255,245,0.4);color:var(--cyan);text-transform:uppercase;}
+
+/* LOG TABLE (research papers) */
+.log-table{width:100%;border-collapse:collapse;font-size:12px;}
+.log-table th{text-align:left;padding:10px 14px;font-size:10px;letter-spacing:3px;color:var(--green-dim);text-transform:uppercase;border-bottom:1px solid var(--border);font-weight:normal;}
+.log-table td{padding:12px 14px;border-bottom:1px solid #080f08;color:var(--text);vertical-align:top;line-height:1.6;}
+.log-table tr:hover td{background:rgba(0,255,65,0.03);}
+.log-table td:first-child{color:var(--green-dim);white-space:nowrap;letter-spacing:1px;}
+.log-table td:last-child{color:var(--green-dim);white-space:nowrap;}
+
+/* HOW TO PUBLISH */
+.steps{counter-reset:steps;}
+.step{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.step:last-child{border:none;}
+.step-n{font-family:'VT323',monospace;font-size:28px;color:var(--green);min-width:36px;line-height:1;}
+.step-body{}
+.step-title{font-family:'Orbitron',sans-serif;font-size:12px;color:var(--green);letter-spacing:2px;margin-bottom:6px;}
+.step-desc{font-size:12px;color:#7a9a7a;line-height:1.7;}
+.step-desc code{background:rgba(0,255,65,0.1);padding:1px 6px;color:var(--green);font-family:'Share Tech Mono',monospace;font-size:11px;}
+.step-desc a{color:var(--cyan);text-decoration:none;}
+.step-desc a:hover{text-shadow:0 0 6px var(--cyan);}
+
+/* NOTICE BOX */
+.notice{border:1px solid rgba(255,215,0,0.3);background:rgba(20,16,0,0.5);padding:18px 22px;font-size:12px;color:var(--text);line-height:1.7;margin-bottom:24px;}
+.notice strong{color:var(--yellow);}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">[ISH@ROOT:~]$</a>
+  <ul class="nav-links">
+    <li><a href="index.html">~/home</a></li>
+    <li><a href="projects.html">~/tools</a></li>
+    <li><a href="certifications.html">~/certs</a></li>
+    <li><a href="blog.html" class="active">~/blog</a></li>
+    <li><a href="index.html#contact">contact</a></li>
+  </ul>
+</nav>
+
+<main>
+<div class="page-hero">
+  <div class="page-title">BLOG & RESEARCH</div>
+  <div class="page-sub">grep -r "insights" ~/blog/ · Articles · Research Papers · Writeups</div>
+</div>
+
+<div class="section">
+
+  <!-- NOTICE ABOUT WIX BLOG -->
+  <div class="notice reveal">
+    <strong>📡 Live Blog Integration:</strong> My full blog is hosted at <a href="https://www.anveekshmrao.com/blog" target="_blank" style="color:var(--cyan)">anveekshmrao.com/blog</a>. All posts below link directly to that platform. Scroll down for publishing instructions.
+  </div>
+
+  <!-- ══ FEATURED POST ══ -->
+  <div class="sec-header reveal"><span class="sec-num">01</span><h2>cat latest_posts.log</h2></div>
+
+  <div style="display:grid;gap:16px;margin-bottom:50px">
+    <div class="blog-card blog-featured reveal">
+      <div class="blog-meta"><span class="featured-badge">⭐ Featured</span><span class="blog-date">2025-03-04</span><span class="tag cyan">Honeypot</span><span class="tag">SSH</span><span class="tag red">Offensive</span></div>
+      <div class="blog-title">HoneyTrap Lab: Deploying a Production-Grade SSH Honeypot to Catch Real Attackers</div>
+      <div class="blog-excerpt">A deep-dive walkthrough on setting up Cowrie SSH honeypot in a production-like environment, integrating MITRE ATT&CK TTP mapping, and feeding captured attacker sessions into Wazuh SIEM for automated alerting and IOC extraction. Includes real attacker data.</div>
+      <a href="https://www.anveekshmrao.com/post/honeytrap-lab-deploying-a-production-grade-ssh-honeypot-to-catch-real-attackers" class="blog-link" target="_blank">read full post</a>
+    </div>
+
+    <div class="blog-card reveal">
+      <div class="blog-meta"><span class="blog-date">2025-10-24</span><span class="tag cyan">Phishing</span><span class="tag">Human Factor</span></div>
+      <div class="blog-title">Understanding the Rise of Phishing Attacks and Human Vulnerability in Cybersecurity</div>
+      <div class="blog-excerpt">An analytical breakdown of why phishing remains the #1 attack vector in 2025 — examining psychological triggers, social engineering patterns, real-world case studies, and defence frameworks including security awareness training best practices.</div>
+      <a href="https://www.anveekshmrao.com/post/understanding-the-rise-of-phishing-attacks-and-human-vulnerability-in-cybersecurity" class="blog-link" target="_blank">read full post</a>
+    </div>
+
+    <div class="blog-card reveal">
+      <div class="blog-meta"><span class="blog-date">2025-10-20</span><span class="tag yellow">Cloud</span><span class="tag">AWS</span><span class="tag">Incident</span></div>
+      <div class="blog-title">Understanding the Impacts of the October 2025 AWS Outage in N. Virginia on Businesses</div>
+      <div class="blog-excerpt">Post-incident analysis of the October 2025 AWS us-east-1 outage — business impact assessment, cascading failure patterns, resilience gaps exposed, and actionable recommendations for multi-region architecture and BCP planning.</div>
+      <a href="https://www.anveekshmrao.com/post/understanding-the-impacts-of-the-october-2025-aws-outage-in-n-virginia-on-businesses" class="blog-link" target="_blank">read full post</a>
+    </div>
+  </div>
+
+  <!-- ══ RESEARCH PAPERS ══ -->
+  <div class="sec-header reveal"><span class="sec-num">02</span><h2>ls ~/papers/ —verbose</h2></div>
+  <div class="terminal reveal" style="margin-bottom:50px">
+    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">research_output.log</span></div>
+    <table class="log-table">
+      <thead><tr><th>Year</th><th>Title</th><th>Type</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>2024</td><td>PhishGuard: ML-Based Phishing Detection — 99.5% Accuracy &amp; Paradigm Ceiling Analysis (Random Forest + XGBoost + Neural Network; key finding: 95.4% FP rate on out-of-distribution URLs)</td><td><span class="tag cyan">Paper</span></td><td><span style="color:var(--green)">Published</span></td></tr>
+        <tr><td>2024</td><td>Cyber-Physical Risk Assessment: Threat Modelling of Boston's Energy Network Infrastructure</td><td><span class="tag cyan">Paper</span></td><td><span style="color:var(--green)">Published</span></td></tr>
+        <tr><td>Ongoing</td><td>Firmware Fuzzing &amp; IoT Vulnerability Research — CACTi Lab, Northeastern University (Prof. Ziming Zhao)</td><td><span class="tag yellow">Research</span></td><td><span style="color:var(--yellow)">Active</span></td></tr>
+        <tr><td>Ongoing</td><td>Medical Device Security Assessment &amp; Responsible Disclosure Framework</td><td><span class="tag yellow">Research</span></td><td><span style="color:var(--yellow)">Active</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ HOW TO PUBLISH ══════════════════════════════ -->
+  <div class="sec-header reveal"><span class="sec-num">03</span><h2>man publish_blog.sh</h2></div>
+
+  <div class="notice reveal">
+    <strong>📌 Your current blog platform is Wix (anveekshmrao.com/blog).</strong> You can either keep using Wix to write posts (recommended for simplicity) or migrate to a self-hosted option like Ghost, Hashnode, or Dev.to. Both paths are explained below.
+  </div>
+
+  <!-- OPTION A: Stay on Wix -->
+  <div class="terminal reveal" style="margin-bottom:28px">
+    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">OPTION A — Keep Wix Blog (Easiest)</span></div>
+    <div class="tl"><span class="cm"># Steps to write &amp; publish a new post on your existing Wix blog:</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-title">Log in to Wix</div><div class="step-desc">Go to <a href="https://manage.wix.com" target="_blank">manage.wix.com</a> → log in with your account.</div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-title">Open Blog Manager</div><div class="step-desc">In the dashboard left sidebar → click <code>Blog</code> → <code>Posts</code> → <code>+ New Post</code>.</div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-title">Write Your Post</div><div class="step-desc">Use Wix's rich text editor. Add a cover image, write your content, add tags (e.g. <code>cybersecurity</code>, <code>pentest</code>, <code>IoT</code>), and set the SEO title + meta description.</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-body"><div class="step-title">Publish</div><div class="step-desc">Click <code>Publish</code> — it goes live at <code>anveekshmrao.com/blog/your-post-slug</code> immediately.</div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-body"><div class="step-title">Update This Page</div><div class="step-desc">After publishing on Wix, ask me to add the new post card to this page with its URL and excerpt. I'll update the HTML for you.</div></div></div>
+    </div>
+  </div>
+
+  <!-- OPTION B: Publish this new site -->
+  <div class="terminal reveal" style="margin-bottom:28px">
+    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">OPTION B — Publish This New Site (GitHub Pages)</span></div>
+    <div class="tl"><span class="cm"># Free hosting — your site will be live at username.github.io</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-title">Create a GitHub Account</div><div class="step-desc">Go to <a href="https://github.com" target="_blank">github.com</a> → sign up (free). Username suggestion: <code>ishrao</code> or <code>anveekshmrao</code>.</div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-title">Create a Repository</div><div class="step-desc">Click <code>+ New Repository</code> → name it exactly <code>yourusername.github.io</code> → set to Public → click Create.</div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-title">Upload Your Files</div><div class="step-desc">Click <code>uploading an existing file</code> → drag in all 4 HTML files (<code>index.html</code>, <code>projects.html</code>, <code>certifications.html</code>, <code>blog.html</code>) + the <code>css/</code> and <code>js/</code> folders → Commit changes.</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-body"><div class="step-title">Enable Pages</div><div class="step-desc">Go to repo <code>Settings</code> → <code>Pages</code> → Source: <code>Deploy from branch</code> → Branch: <code>main</code> → Save. Wait ~2 minutes.</div></div></div>
+      <div class="step"><div class="step-n">5</div><div class="step-body"><div class="step-title">Your Site is Live!</div><div class="step-desc">Visit <code>https://yourusername.github.io</code> — share this link. You can also connect your custom domain <code>anveekshmrao.com</code> by pointing DNS to GitHub in Settings → Pages → Custom domain.</div></div></div>
+    </div>
+  </div>
+
+  <!-- OPTION C: Netlify -->
+  <div class="terminal reveal">
+    <div class="t-header"><div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div><span class="t-title">OPTION C — Netlify (Drag &amp; Drop, 30 seconds)</span></div>
+    <div class="tl"><span class="cm"># Easiest way to get it live right now:</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-title">Go to Netlify Drop</div><div class="step-desc">Visit <a href="https://app.netlify.com/drop" target="_blank">app.netlify.com/drop</a> — no account needed initially.</div></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-title">Zip your folder</div><div class="step-desc">Put all site files (<code>index.html</code>, <code>projects.html</code>, <code>certifications.html</code>, <code>blog.html</code>, <code>css/</code>, <code>js/</code>) into one folder → right-click → Compress/Zip.</div></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-title">Drag the folder onto Netlify</div><div class="step-desc">Drag the <strong>folder</strong> (not the zip) onto the Netlify Drop zone. Your site is live in ~10 seconds at a random URL like <code>amazing-name-123.netlify.app</code>.</div></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-body"><div class="step-title">Connect Custom Domain</div><div class="step-desc">Sign up for free → Site settings → Domain Management → Add <code>anveekshmrao.com</code>. Update your DNS records at your domain registrar to point to Netlify.</div></div></div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div class="status-bar">
+  <span>ISH@ROOT · BLOG &amp; RESEARCH</span>
+  <span id="clock"></span>
+  <span>3 POSTS · 2 PAPERS · ONGOING RESEARCH</span>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
